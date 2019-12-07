@@ -82,6 +82,7 @@ async function storeUser(first, last, email, pass) {
     }).catch(error =>{
       console.log(error); 
     })
+  localStorage.setItem('jwt', jwt); 
   
 }
 
