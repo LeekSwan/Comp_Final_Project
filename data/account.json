@@ -1,2 +1,25 @@
 {
+  "users": {
+    "kristi": {
+      "passwordHash": "$2b$10$P9DUJgL7BnrTLYfE8B.BEOomalMKUkHoeK8L5gKQBcb2SFfioYAh.",
+      "data": {
+        "last": "Kazmierczak",
+        "email": "kristi.kazmierczak@gmail.com"
+      }
+    },
+    "steph": {
+      "passwordHash": "$2b$10$WINJ99l7Vs85qqEVn1j0ZeYLzChytTQS8WASNOOedd/AM7HORXPaO",
+      "data": {
+        "last": "lu",
+        "email": "yoyo@lala.com"
+      }
+    },
+    "bob": {
+      "passwordHash": "$2b$10$8Mxzx2XGPCVYK5frJ4MRGO2bGdgVKxA5q4zF9lHYeUfKTQKjVl2c2",
+      "data": {
+        "last": "B",
+        "email": "bob@gmail.com"
+      }
+    }
+  }
 }

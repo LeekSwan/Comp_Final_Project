@@ -53,23 +53,47 @@ $(document).ready(function(){
     var email = document.getElementById('email').value; 
     var pass = document.getElementById('pass').value;  
     storeUser(first, last, email, pass); 
-    ///window.location.replace("study_hall.html");
+    window.location.replace("study_hall.html");
+  });
+
+  $('#loginButton').on('click', function(e) {
+    e.preventDefault();
+    var name = document.getElementById('getName').value; 
+    var pass = document.getElementById('getPass').value;
+    login(name, pass);
+    
   });
 
 });
 
 
 async function storeUser(first, last, email, pass) {
-  const result = await axios ({
-    method: 'post',
-    url: 'http://localhost:3000/account/create',
-    body: {
-      name : first,
-      pass : pass,
-      data : {
-        last : last,
-        email : email
+  let r = axios.post('http://localhost:3000/account/create', 
+    {
+      name: first,
+      pass: pass,
+      data: {
+        last: last,
+        email: email
       }
-    }
+    });
+    r.then(response => {
+      window.location.replace("study_hall.html");    
+    }).catch(error =>{
+      console.log(error); 
+    })
+  
+}
+
+async function login(name, pass) {
+  let r = axios.post('http://localhost:3000/account/login', 
+  {
+    name: name,
+    pass: pass,
   });
+  r.then(response => {
+    window.location.replace("study_hall.html");    
+  }).catch(error =>{
+    console.log(error); 
+  })
 }
