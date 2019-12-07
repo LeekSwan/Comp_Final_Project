@@ -9,7 +9,10 @@
         <!-- Include links to CSS stylesheets below -->
         <link rel="stylesheet" href="style.css"/> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
+        <script type="module" src="script.js"></script>
+
     </head>
+    
     <body>
         <section class="hero is-dark is-medium">
             <div class="hero-body">
@@ -24,18 +27,58 @@
 
         <section>
             <div class="tab">
-                <button class="tablinks" id="home">Home</button>
-                <button class="tablinks" id="leaders">Leader Board</button>
-                <button class="tablinks" id="to_do">To-Do</button>
-                <button class="tablinks" id="calendar">Calendar</button>
-                <button class="tablinks" id="chat">Chat</button>
+                <button class="tablinks" onclick="openTab(event, 'Home')">Home</button>
+                <button class="tablinks" onclick="openTab(event, 'Leader Board')">Leader Board</button>
+                <button class="tablinks" onclick="openTab(event, 'To-Do')">To-Do</button>
+                <button class="tablinks" onclick="openTab(event, 'Calendar')">Calendar</button>
+                <button class="tablinks" onclick="openTab(event, 'Chat')">Chat</button>
             </div>
-        </section>
 
-        <div id="root">
-            test
-        </div>
+            <div id="Home" class="tabcontent">
+                    <h3>Home</h3>
+                    <p>Test</p>
+                  </div>
+                  
+            <div id="Leader Board" class="tabcontent">
+                    <h3>Leader Board</h3>
+                    <p>Test</p>
+                  </div>
+
+            <div id="To-Do" class="tabcontent">
+                    <h3>To-Do</h3>
+                    <p>Test</p>
+                  </div>
+
+            <div id="Calendar" class="tabcontent">
+                    <h3>Calendar</h3>
+                    <p>Test</p>
+                  </div>
+
+            <div id="Chat" class="tabcontent">
+                    <h3>Chat</h3>
+                    <p>Test</p>
+                  </div>
+        </section>
+            
+        <script>
+                function openTab(evt, tabName) {
+                  var i, tabcontent, tablinks;
+                  tabcontent = document.getElementsByClassName("tabcontent");
+                  for (i = 0; i < tabcontent.length; i++) {
+                    tabcontent[i].style.display = "none";
+                  }
+                  tablinks = document.getElementsByClassName("tablinks");
+                  for (i = 0; i < tablinks.length; i++) {
+                    tablinks[i].className = tablinks[i].className.replace(" active", "");
+                  }
+                  document.getElementById(tabName).style.display = "block";
+                  evt.currentTarget.className += " active";
+                }
+                </script>
     </body>
+
+
+
     <!-- Include links to JavaScript files below -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="node_modules/axios/dist/axios.min.js"></script>
