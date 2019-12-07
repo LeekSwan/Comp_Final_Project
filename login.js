@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
 
   $('.form').find('input, textarea').on('keyup blur focus', function (e) {
@@ -47,9 +48,28 @@ $(document).ready(function(){
   $('#create').on('click', function (e) {
     e.preventDefault(); 
     var first = document.getElementById('first').value; 
+    console.log(first); 
     var last = document.getElementById('last').value; 
     var email = document.getElementById('email').value; 
     var pass = document.getElementById('pass').value;  
-    window.location.replace("study_hall.html");
+    storeUser(first, last, email, pass); 
+    ///window.location.replace("study_hall.html");
   });
+
 });
+
+
+async function storeUser(first, last, email, pass) {
+  const result = await axios ({
+    method: 'post',
+    url: 'http://localhost:3000/account/create',
+    body: {
+      name : first,
+      pass : pass,
+      data : {
+        last : last,
+        email : email
+      }
+    }
+  });
+}
