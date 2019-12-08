@@ -20,6 +20,27 @@
         "last": "B",
         "email": "bob@gmail.com"
       }
+    },
+    "yes": {
+      "passwordHash": "$2b$10$soIIWFue6AXuLUH1AlU./uoyat77sIXkvjM66wgdzhGa/EqtrEU5W",
+      "data": {
+        "last": "no",
+        "email": "helllo@gmail.comq"
+      }
+    },
+    "test": {
+      "passwordHash": "$2b$10$p1FgnTV0v9DRSLlqaVJVt.jDumng7TrtQl/1IxyNokU4.HafrL5EG",
+      "data": {
+        "last": "test",
+        "email": "test@email"
+      }
+    },
+    "test1": {
+      "passwordHash": "$2b$10$sj5Tbayx79n3P.USQ2Ng5uSe5Rj2Pf0F3AiWnmO9QQlXZDl/9H/B.",
+      "data": {
+        "last": "tes",
+        "email": "test@gest"
+      }
     }
   }
 }
