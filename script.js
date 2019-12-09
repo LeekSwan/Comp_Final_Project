@@ -1,12 +1,14 @@
+
 export const renderSite = function() {
     const $root = $('#root');
-    //let jwt = localStorage.getItem('jwt');
     
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
- 
+
+    
     //Home
     $(document).on('click', '#home',  function(e){
-        
+        e.preventDefault(); 
+        console.log("clicked home");
         getUserHomeInfo(); 
     });
 
@@ -18,9 +20,11 @@ export const renderSite = function() {
     //To-Do
     $(document).on('click', '#toDo', function(e){
         e.preventDefault(); 
+        console.log("clicked todo");
         getToDo(); 
+        
         // list functionality 
-        $(document).on(".userInput", "keyup",function(e){
+        $(".userInput").on("keyup",function(e) {
             //13  means enter button
             if(e.keyCode == 13 && $(".userInput").val() != "")
             {
@@ -52,7 +56,8 @@ export const renderSite = function() {
               $(".userInput").val("");
             }
           });
-    });
+        });
+    
     
     //Calendar
 
@@ -70,7 +75,7 @@ $(function () {
 }); 
 
 
-export async function getUserHomeInfo() {
+export function getUserHomeInfo() {
     const $root = $('#root');
 
     /*const $root = $('#root');
@@ -81,6 +86,7 @@ export async function getUserHomeInfo() {
     })*/
 
     let screen = `
+        <section id="root">
         <div>
         <h1>Welcome Back! Let's get to Studying!</h1>
         <h2>Current Score: </h2>
@@ -90,40 +96,43 @@ export async function getUserHomeInfo() {
             <button id="stop">stop</button>
             <button id="clear">clear</button>
         </div>
-    </div>`
+    </div>
+    </section>`
     $root.replaceWith(screen); 
 }
 
-export async function getToDo(){
+export function getToDo(){
     const $root = $('#root');
-    let screen = `
-    <div id="list" class="container">
-    <div class="notCompleted">
-      <h3>Not Completed</h3>
-    </div>
+    let screen = document.createElement('section');
+    screen.innerHTML = `
+    <section id="root">
+        <div id="list" class="container">
+            <div class="notCompleted">
+            <h3>Not Completed</h3>
+            </div>
 
-    <div class="completed">
-      <h3>Completed</h3>
-    </div>
-    <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
-  </div>
+            <div class="completed">
+            <h3>Completed</h3>
+            </div>
+            <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
+            </div>
+        </div>
+    </section>
     `
     $root.replaceWith(screen); 
 
 }
 
-/*
-onclick="openTab(event, 'Home')"
 function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-      }*/
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementById("tabcontent");
+    /*for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }*/
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }

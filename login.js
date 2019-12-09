@@ -101,7 +101,6 @@ async function login(name, pass) {
     let jwt = r.jwt; 
     console.log(jwt);
     localStorage.setItem('jwt', jwt); 
-
     window.location.replace("study_hall.html");
     
   }).catch(error =>{
