@@ -1,12 +1,13 @@
 export const renderSite = function() {
     const $root = $('#root');
-    let jwt = localStorage.getItem('jwt');
+    //let jwt = localStorage.getItem('jwt');
     
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
  
     //Home
-    $(document).on('click', '#home', async function(e){
-    
+    $(document).on('click', '#home',  function(e){
+        
+        getUserHomeInfo(); 
     });
 
     //Leader Board
@@ -15,9 +16,11 @@ export const renderSite = function() {
     });
     
     //To-Do
-    $(document).on('click', '#toDo', async function(e){
+    $(document).on('click', '#toDo', function(e){
+        e.preventDefault(); 
         getToDo(); 
-        $(".userInput").on("keyup",function(e){
+        // list functionality 
+        $(document).on(".userInput", "keyup",function(e){
             //13  means enter button
             if(e.keyCode == 13 && $(".userInput").val() != "")
             {
@@ -57,7 +60,9 @@ export const renderSite = function() {
     $(document).on('click', '#chat', async function(e){
         
     });
-        
+    
+
+    
 }
  
 $(function () {
@@ -67,13 +72,26 @@ $(function () {
 
 export async function getUserHomeInfo() {
     const $root = $('#root');
+
+    /*const $root = $('#root');
     const result = await axios({
         method: 'get',
         url: 'http://localhost:3000/public/users'
 
-    })
+    })*/
 
-    
+    let screen = `
+        <div>
+        <h1>Welcome Back! Let's get to Studying!</h1>
+        <h2>Current Score: </h2>
+        <div>
+            <h1><time id="timer">00:00:00</time></h1>
+            <button id="start">start</button>
+            <button id="stop">stop</button>
+            <button id="clear">clear</button>
+        </div>
+    </div>`
+    $root.replaceWith(screen); 
 }
 
 export async function getToDo(){
@@ -82,7 +100,6 @@ export async function getToDo(){
     <div id="list" class="container">
     <div class="notCompleted">
       <h3>Not Completed</h3>
-
     </div>
 
     <div class="completed">
@@ -94,8 +111,6 @@ export async function getToDo(){
     $root.replaceWith(screen); 
 
 }
-//<h1 class="title is-centered">Welcome Back!</h1>
-
 
 /*
 onclick="openTab(event, 'Home')"

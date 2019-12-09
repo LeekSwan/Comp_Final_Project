@@ -1,5 +1,8 @@
 // inspiration by: 
 // https://jsfiddle.net/Daniel_Hug/pvk6p/
+
+
+
 var stopWatch = document.getElementById('timer'),
 start = document.getElementById('start'),
 stop = document.getElementById('stop'),
@@ -25,7 +28,6 @@ function add() {
     timer();
 }
 
-
 function timer() {
     t = setTimeout(add, 1000);
 }
@@ -47,3 +49,4 @@ clear.onclick = function() {
     score = (hours + minutes/60) * 60; 
     seconds = 0; minutes = 0; hours = 0;
 }
+

@@ -1,6 +1,4 @@
 
-
-
 $(document).ready(function(){
 
   $('.form').find('input, textarea').on('keyup blur focus', function (e) {
@@ -83,34 +81,13 @@ async function storeUser(first, last, email, pass) {
       }
     });
     r.then(response => {
-      window.location.replace("study_hall.html");    
+      login(first, pass);   
     }).catch(error =>{
       console.log(error); 
     });
-  //store jwt token to identify user 
-  let jwt = axios.get('http://localhost:3000/account/status');
-  r.then(response => {
-    localStorage.setItem('jwt', jwt);     
-  }).catch(error =>{
-    console.log(error); 
-  });
-
-  //store it for comparison 
-  r = axios.post('http://localhost:3000/user', 
-    {
-      name: first,
-      data: {
-        token: localStorage.getItem(jwt)
-      }
-    });
-  //load home tab
-  /*r.then(response => {
-    getUserHomeInfo();
-  }).catch(error =>{
-    console.log(error); 
-  });*/
-  
 }
+
+
 
 async function login(name, pass) {
   let r = axios.post('http://localhost:3000/account/login', 
@@ -118,12 +95,18 @@ async function login(name, pass) {
     name: name,
     pass: pass,
   });
+
   r.then(response => {
-    window.location.replace("study_hall.html");    
+      
+    let jwt = r.jwt; 
+    console.log(jwt);
+    localStorage.setItem('jwt', jwt); 
+
+    window.location.replace("study_hall.html");
+    
   }).catch(error =>{
     console.log(error); 
   });
 
-  //localStorage.setItem('jwt', jwt); 
   
 }
