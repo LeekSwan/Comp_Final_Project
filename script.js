@@ -16,7 +16,39 @@ export const renderSite = function() {
     
     //To-Do
     $(document).on('click', '#toDo', async function(e){
-        
+        getToDo(); 
+        $(".userInput").on("keyup",function(e){
+            //13  means enter button
+            if(e.keyCode == 13 && $(".userInput").val() != "")
+            {
+              var task = $("<div class='task'></div>").text($(".userInput").val());
+    
+              //for checkmark
+              var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
+                var p = $(this).parent();
+                //$(".completed").append(p);
+                p.fadeOut(function(){
+                  $(".completed").append(p);
+                  p.fadeIn();
+                }); 
+                $(this).remove();
+              });
+    
+              //for delete
+              var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
+                var p = $(this).parent();
+                //p.remove();
+                p.fadeOut(function(){
+                  p.remove();
+                });
+              });
+    
+              task.append(del,check);
+              $(".notCompleted").append(task);
+                //to clear the input
+              $(".userInput").val("");
+            }
+          });
     });
     
     //Calendar
@@ -44,6 +76,24 @@ export async function getUserHomeInfo() {
     
 }
 
+export async function getToDo(){
+    const $root = $('#root');
+    let screen = `
+    <div id="list" class="container">
+    <div class="notCompleted">
+      <h3>Not Completed</h3>
+
+    </div>
+
+    <div class="completed">
+      <h3>Completed</h3>
+    </div>
+    <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
+  </div>
+    `
+    $root.replaceWith(screen); 
+
+}
 //<h1 class="title is-centered">Welcome Back!</h1>
 
 
