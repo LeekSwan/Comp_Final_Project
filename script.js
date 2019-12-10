@@ -13,12 +13,11 @@ export const renderSite = function() {
     });
 
     //Leader Board
-    $(document).on('click', '#leader', async function(e){
-        
+    $(document).on('click', '#leader', function(e){
+        e.preventDefault(); 
+        getLeaderBoard(); 
     });
     
-
-
 
 
 
@@ -66,10 +65,13 @@ export const renderSite = function() {
     
     
     //Calendar
+    $(document).on('click', '#inspire', async function(e){
+        getInspired();
+    });
 
     //Chat
     $(document).on('click', '#chat', async function(e){
-        
+        getChat(); 
     });
 
 
@@ -113,12 +115,13 @@ export function getUserHomeInfo() {
 
 export async function getToDo(){
     const $root = $('#root');
+    /* Commented because going to implement later
     let r = axios.get('http://localhost:3000/user' ,
         { 
             headers:{
                 "Authorization": "Bearer" + localStorage.getItem('jwt')
             },
-    });
+    });*/
 
 
     let screen = document.createElement('section');
@@ -139,6 +142,51 @@ export async function getToDo(){
     $root.replaceWith(screen); 
 
 }
+
+
+export async function getLeaderBoard(){
+    const $root = $('#root');
+    let screen = document.createElement('section');
+    screen.innerHTML = `
+    <section id="root">
+        <h1>Leader board</h1>
+
+    </section>`
+
+    $root.replaceWith(screen);  
+}
+
+export async function getInspired(){
+    const $root = $('#root');
+    let screen = document.createElement('section');
+    screen.innerHTML = `
+    <section id="root">
+        <h1>Inspirational Quote</h1>
+
+    </section>`
+
+    $root.replaceWith(screen);  
+}
+
+export async function getChat(){
+    const $root = $('#root');
+    let screen = document.createElement('section');
+    screen.innerHTML = `
+    <section id="root">
+        <h1>Chat room here</h1>
+
+    </section>`
+    $root.replaceWith(screen);  
+}
+
+
+
+
+
+
+
+
+
 
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
