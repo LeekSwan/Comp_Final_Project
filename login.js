@@ -117,7 +117,10 @@ async function login(name, pass) {
     //alert("jwt:"+response.data.jwt);
     localStorage.setItem('jwt', response.data.jwt);   
     token = localStorage.getItem('jwt');  
-    
+
+    //change pages and load home screen for study hall 
+    window.location.replace("study_hall.html");
+    getUserHomeInfo();
   }).catch(error =>{
     console.log(error); 
   });
@@ -126,8 +129,7 @@ async function login(name, pass) {
  
   
   /*r.then(response => {
-    window.location.replace("study_hall.html");
-    getUserHomeInfo(); 
+     
     
   }).catch(error =>{
     console.log(error); 
