@@ -93,7 +93,6 @@ export function getUserHomeInfo() {
     const result = await axios({
         method: 'get',
         url: 'http://localhost:3000/public/users'
-
     })*/
 
     let screen = `
@@ -129,7 +128,6 @@ export async function getToDo(){
             <div class="notCompleted">
             <h3>Not Completed</h3>
             </div>
-
             <div class="completed">
             <h3>Completed</h3>
             </div>
@@ -155,4 +153,3 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
   }
-
