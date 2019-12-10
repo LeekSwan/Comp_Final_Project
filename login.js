@@ -118,21 +118,6 @@ async function login(name, pass) {
     localStorage.setItem('jwt', response.data.jwt);   
     token = localStorage.getItem('jwt');  
     
-
-
-    axios.post("http://localhost:3000/user/kristi", 
-    {data:
-      {
-        name: "" 
-      }
-      
-    },
-    {headers: { Authorization: `Bearer ${token}` }},
-    )
-    .then(res => console.log(res))
-    .catch(err => console.log(err));
-    
-    
   }).catch(error =>{
     console.log(error); 
   });
