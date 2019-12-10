@@ -124,13 +124,12 @@ async function login(name, pass) {
     
     localStorage.setItem('jwt', response.data.jwt);   
     token = localStorage.getItem('jwt');  
+    window.location.replace("study_hall.html");
+    getUserHomeInfo();
 
-    // testing for user for todo list 
+    /*// testing for user for todo list 
     axios.post('http://localhost:3000/user/TODO' , 
-      {data: {
-        l1: "clean dishes",
-        l2: "do homework"
-      }},
+      {data: {}},
       {headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` }
     }).then(function(res){
       //change pages and load home screen for study hall after login
@@ -139,7 +138,7 @@ async function login(name, pass) {
     }).catch(error =>{
       console.log(error); 
     });
-
+*/
   }).catch(error =>{
     console.log(error); 
   });

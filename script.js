@@ -25,43 +25,49 @@ export const renderSite = function() {
     //To-Do
     $(document).on('click', '#toDo', function(e){
         e.preventDefault(); 
-        console.log("clicked todo");
         getToDo(); 
-        
-        // list functionality 
-        $(".userInput").on("keyup",function(e) {
-            //13  means enter button
-            if(e.keyCode == 13 && $(".userInput").val() != "")
-            {
-              var task = $("<div class='task'></div>").text($(".userInput").val());
-                
-              //for checkmark
-              var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
-                var p = $(this).parent();
-                //$(".completed").append(p);
-                p.fadeOut(function(){
-                  $(".completed").append(p);
-                  p.fadeIn();
-                }); 
-                $(this).remove();
-              });
-    
-              //for delete
-              var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
-                var p = $(this).parent();
-                //p.remove();
-                p.fadeOut(function(){
-                  p.remove();
-                });
-              });
-    
-              task.append(del,check);
-              $(".notCompleted").append(task);
-                //to clear the input
-              $(".userInput").val("");
-            }
+    });
+
+     // list functionality 
+     $(document).on("keyup", ".userInput" ,function(e) {
+        e.preventDefault();         
+        var idNUM = 0;         
+        //13  means enter button
+        if(e.keyCode == 13 && $(".userInput").val() != "")
+        {
+            e.preventDefault();
+            var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
+            idNUM++; 
+            addTODO(idNUM, $(".userInput").val()); 
+
+
+          //for checkmark
+          var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
+            var p = $(this).parent();
+            //$(".completed").append(p);
+            p.fadeOut(function(){
+              $(".completed").append(p);
+              p.fadeIn();
+            }); 
+            $(this).remove();
           });
-        });
+
+          //for delete
+          var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
+            var p = $(this).parent();
+            //p.remove();
+            p.fadeOut(function(){
+              p.remove();
+            });
+          });
+
+          task.append(del,check);
+          $(".notCompleted").append(task);
+            //to clear the input
+          $(".userInput").val("");
+          return false;
+        }
+      });
     
     
     //Calendar
@@ -115,15 +121,6 @@ export function getUserHomeInfo() {
 
 export async function getToDo(){
     const $root = $('#root');
-    /* Commented because going to implement later
-    let r = axios.get('http://localhost:3000/user' ,
-        { 
-            headers:{
-                "Authorization": "Bearer" + localStorage.getItem('jwt')
-            },
-    });*/
-
-
     let screen = document.createElement('section');
     screen.innerHTML = `
     <section id="root">
@@ -144,7 +141,19 @@ export async function getToDo(){
 }
 
 // add to To do
-async function addTODO(){
+async function addTODO(idNUM, task){
+    var id = idNUM;
+    axios.post('http://localhost:3000/user/TODO' ,
+    {data: {
+      [id] : task
+    }},
+    {headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` }},
+    {type: "merge"}
+  ).then(function(res){
+    console.log("added todo");
+  }).catch(error =>{
+    console.log(error);
+  });
 
 }
 
