@@ -41,6 +41,20 @@
         "last": "tes",
         "email": "test@gest"
       }
+    },
+    "optimus": {
+      "passwordHash": "$2b$10$iidDrG4IEQExYwekozjuTe1VSaHYppbHhMGBCC.y3Jda93sSb2Yvq",
+      "data": {
+        "last": "Prime",
+        "email": "rollout@autobots.com"
+      }
+    },
+    "stephanie": {
+      "passwordHash": "$2b$10$LVKPUazzuq7VbQgNsXSbUuPn.YHRoLdIh5Rb8jVCHCr6sz0uSIdi.",
+      "data": {
+        "last": "Lu",
+        "email": "stephanieatlu99@gmail.com"
+      }
     }
   }
 }

@@ -1,6 +1,5 @@
 
 
-
 $(document).ready(function(){
 
   $('.form').find('input, textarea').on('keyup blur focus', function (e) {
@@ -51,7 +50,7 @@ $(document).ready(function(){
     var pass = document.getElementById('pass').value;  
     
     storeUser(first, last, email, pass); 
-    window.location.replace("study_hall.html");
+
   });
 
 
@@ -82,48 +81,72 @@ async function storeUser(first, last, email, pass) {
         email: email
       }
     });
-    r.then(response => {
-      window.location.replace("study_hall.html");    
+     
+    /*let m = axios.post('http://localhost:3000/user/', 
+    {
+      data: {
+        name: first,
+        todo: {}
+      },
+      headers: {Authorization: "Bearer "+localStorage.getItem('jwt')}
+      
+    });
+
+    m.then(response => {
+      console.log("made user");
+    }).catch(error =>{
+      console.log(error);
+      alert(error);  
+    });
+
+   /* r.then(response => {
+      login(first, pass);   
     }).catch(error =>{
       console.log(error); 
-    });
-  //store jwt token to identify user 
-  let jwt = axios.get('http://localhost:3000/account/status');
-  r.then(response => {
-    localStorage.setItem('jwt', jwt);     
-  }).catch(error =>{
-    console.log(error); 
-  });
+    });*/
+  }
 
-  //store it for comparison 
-  r = axios.post('http://localhost:3000/user', 
-    {
-      name: first,
-      data: {
-        token: localStorage.getItem(jwt)
-      }
-    });
-  //load home tab
-  /*r.then(response => {
-    getUserHomeInfo();
-  }).catch(error =>{
-    console.log(error); 
-  });*/
-  
-}
 
 async function login(name, pass) {
-  let r = axios.post('http://localhost:3000/account/login', 
+  let token; 
+  axios.post('http://localhost:3000/account/login', 
   {
     name: name,
     pass: pass,
-  });
-  r.then(response => {
-    window.location.replace("study_hall.html");    
+  }).then(function(response) {
+    //alert("jwt:"+response.data.jwt);
+    localStorage.setItem('jwt', response.data.jwt);   
+    token = localStorage.getItem('jwt');  
+    
+
+
+    axios.post("http://localhost:3000/user/kristi", 
+    {data:
+      {
+        name: "" 
+      }
+      
+    },
+    {headers: { Authorization: `Bearer ${token}` }},
+    )
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+    
+    
   }).catch(error =>{
     console.log(error); 
   });
 
-  //localStorage.setItem('jwt', jwt); 
+  
+ 
+  
+  /*r.then(response => {
+    window.location.replace("study_hall.html");
+    getUserHomeInfo(); 
+    
+  }).catch(error =>{
+    console.log(error); 
+  });
+*/
   
 }

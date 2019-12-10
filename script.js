@@ -1,28 +1,15 @@
+var ids = 0; 
+
+
 export const renderSite = function() {
     const $root = $('#root');
-    let jwt = localStorage.getItem('jwt');
-/*
-    $root.append(`<section>
-    <div class="tab">
-        <button class="tablinks" id="home">Home</button>
-        <button class="tablinks" id="leader">Leader Board</button>
-        <button class="tablinks" id="toDo">To-Do</button>
-        <button class="tablinks" id="calender">Calendar</button>
-        <button class="tablinks" id="chat">Chat</button>
-    </div>
-</section>`
-*/
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
- 
+
+
     //Home
-    $(document).on('click', '#home', async function(e){
-      document.getElementByClassName("container").innerHTML = "";
-      let screen = `
-      <div id="list" class="container">
-        <h3>Not Completed</h3>
-      </div>
-      `
-      $root.append(screen); 
+    $(document).on('click', '#home',  function(e){
+        e.preventDefault(); 
+        getUserHomeInfo(); 
     });
 
     //Leader Board
@@ -30,10 +17,20 @@ export const renderSite = function() {
         
     });
     
+
+
+
+
+
+
     //To-Do
-    $(document).on('click', '#toDo', async function(e){
+    $(document).on('click', '#toDo', function(e){
+        e.preventDefault(); 
+        console.log("clicked todo");
         getToDo(); 
-        $(".userInput").on("keyup",function(e){
+        
+        // list functionality 
+        $(".userInput").on("keyup",function(e) {
             //13  means enter button
             if(e.keyCode == 13 && $(".userInput").val() != "")
             {
@@ -65,7 +62,8 @@ export const renderSite = function() {
               $(".userInput").val("");
             }
           });
-    });
+        });
+    
     
     //Calendar
 
@@ -73,60 +71,84 @@ export const renderSite = function() {
     $(document).on('click', '#chat', async function(e){
         
     });
-        
-}
 
 
-export async function getUserHomeInfo() {
-    const $root = $('#root');
-    document.getElementsByClassName("container").innerHTML = "";
-    const result = await axios({
-        method: 'get',
-        url: 'http://localhost:3000/public/users'
 
-    })
+
+
+
 
     
 }
 
+
+export function getUserHomeInfo() {
+    const $root = $('#root');
+
+    /*const $root = $('#root');
+    const result = await axios({
+        method: 'get',
+        url: 'http://localhost:3000/public/users'
+
+    })*/
+
+    let screen = `
+        <section id="root">
+        <div>
+        <h1>Welcome Back! Let's get to Studying!</h1>
+        <h2>Current Score: </h2>
+        <div>
+            <h1><time id="timer">00:00:00</time></h1>
+            <button id="start">start</button>
+            <button id="stop">stop</button>
+            <button id="clear">clear</button>
+        </div>
+    </div>
+    </section>`
+    $root.replaceWith(screen); 
+}
+
 export async function getToDo(){
     const $root = $('#root');
-    let screen = `
-    <div id="list" class="container">
-    <div class="notCompleted">
-      <h3>Not Completed</h3>
+    let r = axios.get('http://localhost:3000/user' ,
+        { 
+            headers:{
+                "Authorization": "Bearer" + localStorage.getItem('jwt')
+            },
+    });
 
-    </div>
 
-    <div class="completed">
-      <h3>Completed</h3>
-    </div>
-    <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
-  </div>
+    let screen = document.createElement('section');
+    screen.innerHTML = `
+    <section id="root">
+        <div id="list" class="container">
+            <div class="notCompleted">
+            <h3>Not Completed</h3>
+            </div>
+
+            <div class="completed">
+            <h3>Completed</h3>
+            </div>
+            <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
+            </div>
+        </div>
+    </section>
     `
     $("#root").getElementByClassName("contentContainer").innerHTML = screen;
 
-};
-//<h1 class="title is-centered">Welcome Back!</h1>
+}
 
-/*
-onclick="openTab(event, 'Home')"
 function openTab(evt, tabName) {
-        var i, tabcontent, tablinks;
-        tabcontent = document.getElementsByClassName("tabcontent");
-        for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks");
-        for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.className += " active";
-      }*/
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementById("tabcontent");
+    /*for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }*/
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
 
-
- 
-      $(function () {
-        renderSite(); 
-    }); 
