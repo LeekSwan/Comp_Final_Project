@@ -41,6 +41,13 @@
         "last": "tes",
         "email": "test@gest"
       }
+    },
+    "test2": {
+      "passwordHash": "$2b$10$me4Bn8JWdG6HlQxTFOM6xOGhto1IT2t5BVnZM5rYUn4PfZAHpE6dC",
+      "data": {
+        "last": "test2",
+        "email": "test2@gmail.com"
+      }
     }
   }
 }

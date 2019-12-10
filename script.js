@@ -1,14 +1,12 @@
 
 export const renderSite = function() {
     const $root = $('#root');
-    
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
 
-    
+
     //Home
     $(document).on('click', '#home',  function(e){
         e.preventDefault(); 
-        console.log("clicked home");
         getUserHomeInfo(); 
     });
 
@@ -17,6 +15,12 @@ export const renderSite = function() {
         
     });
     
+
+
+
+
+
+
     //To-Do
     $(document).on('click', '#toDo', function(e){
         e.preventDefault(); 
@@ -65,7 +69,12 @@ export const renderSite = function() {
     $(document).on('click', '#chat', async function(e){
         
     });
-    
+
+
+
+
+
+
 
     
 }
@@ -136,3 +145,4 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
   }
+

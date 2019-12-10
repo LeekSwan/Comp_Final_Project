@@ -1,4 +1,5 @@
 
+
 $(document).ready(function(){
 
   $('.form').find('input, textarea').on('keyup blur focus', function (e) {
@@ -49,7 +50,7 @@ $(document).ready(function(){
     var pass = document.getElementById('pass').value;  
     
     storeUser(first, last, email, pass); 
-    window.location.replace("study_hall.html");
+
   });
 
 
@@ -97,11 +98,9 @@ async function login(name, pass) {
   });
 
   r.then(response => {
-      
-    let jwt = r.jwt; 
-    console.log(jwt);
-    localStorage.setItem('jwt', jwt); 
+    localStorage.setItem('jwt', r.jwt);    
     window.location.replace("study_hall.html");
+    getUserHomeInfo(); 
     
   }).catch(error =>{
     console.log(error); 
