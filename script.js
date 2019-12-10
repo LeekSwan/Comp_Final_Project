@@ -13,7 +13,7 @@ export const renderSite = function() {
     });
 
     //Leader Board
-    $('#root').on('click', '#leader', async function(e){
+    $(document).on('click', '#leader', async function(e){
         
     });
     
@@ -80,6 +80,10 @@ export const renderSite = function() {
 
     
 }
+ 
+$(function () {
+    renderSite(); 
+}); 
 
 
 export function getUserHomeInfo() {
@@ -89,7 +93,6 @@ export function getUserHomeInfo() {
     const result = await axios({
         method: 'get',
         url: 'http://localhost:3000/public/users'
-
     })*/
 
     let screen = `
@@ -125,7 +128,6 @@ export async function getToDo(){
             <div class="notCompleted">
             <h3>Not Completed</h3>
             </div>
-
             <div class="completed">
             <h3>Completed</h3>
             </div>
@@ -134,7 +136,7 @@ export async function getToDo(){
         </div>
     </section>
     `
-    $("#root").getElementByClassName("contentContainer").innerHTML = screen;
+    $root.replaceWith(screen); 
 
 }
 
@@ -151,4 +153,3 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
   }
-
