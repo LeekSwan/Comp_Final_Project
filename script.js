@@ -1,3 +1,5 @@
+var ids = 0; 
+
 
 export const renderSite = function() {
     const $root = $('#root');
@@ -110,8 +112,16 @@ export function getUserHomeInfo() {
     $root.replaceWith(screen); 
 }
 
-export function getToDo(){
+export async function getToDo(){
     const $root = $('#root');
+    let r = axios.get('http://localhost:3000/user' ,
+        { 
+            headers:{
+                "Authorization": "Bearer" + localStorage.getItem('jwt')
+            },
+    });
+
+
     let screen = document.createElement('section');
     screen.innerHTML = `
     <section id="root">

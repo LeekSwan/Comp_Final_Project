@@ -81,30 +81,72 @@ async function storeUser(first, last, email, pass) {
         email: email
       }
     });
-    r.then(response => {
+     
+    /*let m = axios.post('http://localhost:3000/user/', 
+    {
+      data: {
+        name: first,
+        todo: {}
+      },
+      headers: {Authorization: "Bearer "+localStorage.getItem('jwt')}
+      
+    });
+
+    m.then(response => {
+      console.log("made user");
+    }).catch(error =>{
+      console.log(error);
+      alert(error);  
+    });
+
+   /* r.then(response => {
       login(first, pass);   
     }).catch(error =>{
       console.log(error); 
-    });
-}
-
+    });*/
+  }
 
 
 async function login(name, pass) {
-  let r = axios.post('http://localhost:3000/account/login', 
+  let token; 
+  axios.post('http://localhost:3000/account/login', 
   {
     name: name,
     pass: pass,
+  }).then(function(response) {
+    //alert("jwt:"+response.data.jwt);
+    localStorage.setItem('jwt', response.data.jwt);   
+    token = localStorage.getItem('jwt');  
+    
+
+
+    axios.post("http://localhost:3000/user/kristi", 
+    {data:
+      {
+        name: "" 
+      }
+      
+    },
+    {headers: { Authorization: `Bearer ${token}` }},
+    )
+    .then(res => console.log(res))
+    .catch(err => console.log(err));
+    
+    
+  }).catch(error =>{
+    console.log(error); 
   });
 
-  r.then(response => {
-    localStorage.setItem('jwt', r.jwt);    
+  
+ 
+  
+  /*r.then(response => {
     window.location.replace("study_hall.html");
     getUserHomeInfo(); 
     
   }).catch(error =>{
     console.log(error); 
   });
-
+*/
   
 }

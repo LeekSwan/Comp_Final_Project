@@ -48,6 +48,62 @@
         "last": "test2",
         "email": "test2@gmail.com"
       }
+    },
+    "test3": {
+      "passwordHash": "$2b$10$EoFYpXV2H66KQUz/t6BRXORpmD3jpNP92QhzL5/4M0pO6v779mC9m",
+      "data": {
+        "last": "test3",
+        "email": "test3@gmail.com"
+      }
+    },
+    "test4": {
+      "passwordHash": "$2b$10$2hiawCJH1Kv1nR9fcSF.hOs1WbxKx9vRSplk05m2Vu2EIh6LVTcMi",
+      "data": {
+        "last": "test4",
+        "email": "test4@gmail.com"
+      }
+    },
+    "yolo": {
+      "passwordHash": "$2b$10$gcLPyyJlJ5kN6LtsVkJkj.IoG9yOFC37WChyJ0ENJudrXoH/l70aW",
+      "data": {
+        "last": "yolo",
+        "email": "yola@yola.com"
+      }
+    },
+    "t": {
+      "passwordHash": "$2b$10$O3M.DvQRnJEHt6TGAUwia.yjKdA5pNn/2kBmYgwx3ytkb0ssrU5K.",
+      "data": {
+        "last": "t",
+        "email": "t@"
+      }
+    },
+    "t2": {
+      "passwordHash": "$2b$10$aCBEkWYLMoWp2zqydmDkC.GTXQDPp1gJwgX.PGHx8jGQG.8PGWZ0q",
+      "data": {
+        "last": "t2",
+        "email": "t2@"
+      }
+    },
+    "y": {
+      "passwordHash": "$2b$10$PdLgut.CTvS87ZDSOf1LPejZpl5WWiqsleZ1reqYBaNsxCx3oJtEq",
+      "data": {
+        "last": "y",
+        "email": "y@"
+      }
+    },
+    "a": {
+      "passwordHash": "$2b$10$2.9A.stLhnXNdU0t3v7e6.e4v7u4feJJIjxcX5q92B36Gz.uFyxVa",
+      "data": {
+        "last": "a",
+        "email": "a@"
+      }
+    },
+    "b": {
+      "passwordHash": "$2b$10$l851eszNs5HLAZVmHzFncOoB99tS2zg090Wqql2UWQvvqq52uNUg.",
+      "data": {
+        "last": "b",
+        "email": "b@"
+      }
     }
   }
 }
