@@ -34,17 +34,13 @@
   /*LIST STYLE SHEET*/
   #list {
     font-family: "copperplate", sans-serif;
-    min-height: 100vh;
-    margin: 100px;
   }
   
   .userInput{
     border: none;
     background: none;
     border-bottom: solid black;
-    width: 500px;
     font-size:20px;
-    margin-top: 50px;
   }
   
   .userInput::placeholder{

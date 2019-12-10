@@ -1,16 +1,32 @@
 export const renderSite = function() {
     const $root = $('#root');
     let jwt = localStorage.getItem('jwt');
-    
+/*
+    $root.append(`<section>
+    <div class="tab">
+        <button class="tablinks" id="home">Home</button>
+        <button class="tablinks" id="leader">Leader Board</button>
+        <button class="tablinks" id="toDo">To-Do</button>
+        <button class="tablinks" id="calender">Calendar</button>
+        <button class="tablinks" id="chat">Chat</button>
+    </div>
+</section>`
+*/
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
  
     //Home
     $(document).on('click', '#home', async function(e){
-    
+      document.getElementByClassName("container").innerHTML = "";
+      let screen = `
+      <div id="list" class="container">
+        <h3>Not Completed</h3>
+      </div>
+      `
+      $root.append(screen); 
     });
 
     //Leader Board
-    $(document).on('click', '#leader', async function(e){
+    $('#root').on('click', '#leader', async function(e){
         
     });
     
@@ -59,14 +75,11 @@ export const renderSite = function() {
     });
         
 }
- 
-$(function () {
-    renderSite(); 
-}); 
 
 
 export async function getUserHomeInfo() {
     const $root = $('#root');
+    document.getElementsByClassName("container").innerHTML = "";
     const result = await axios({
         method: 'get',
         url: 'http://localhost:3000/public/users'
@@ -91,11 +104,10 @@ export async function getToDo(){
     <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
   </div>
     `
-    $root.replaceWith(screen); 
+    $("#root").getElementByClassName("contentContainer").innerHTML = screen;
 
-}
+};
 //<h1 class="title is-centered">Welcome Back!</h1>
-
 
 /*
 onclick="openTab(event, 'Home')"
@@ -112,3 +124,9 @@ function openTab(evt, tabName) {
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
       }*/
+
+
+ 
+      $(function () {
+        renderSite(); 
+    }); 
