@@ -34,7 +34,7 @@ export const renderSite = function() {
             if(e.keyCode == 13 && $(".userInput").val() != "")
             {
               var task = $("<div class='task'></div>").text($(".userInput").val());
-    
+                
               //for checkmark
               var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
                 var p = $(this).parent();
@@ -142,6 +142,29 @@ export async function getToDo(){
     $root.replaceWith(screen); 
 
 }
+
+// add to To do
+async function addTODO(){
+
+}
+
+// delete to do 
+async function deleteTODO(){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 export async function getLeaderBoard(){

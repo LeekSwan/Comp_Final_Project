@@ -97,43 +97,53 @@ async function storeUser(first, last, email, pass) {
     }).catch(error =>{
       console.log(error);
       alert(error);  
-    });
+    });*/
 
-   /* r.then(response => {
+    r.then(response => {
       login(first, pass);   
     }).catch(error =>{
       console.log(error); 
-    });*/
+    });
   }
 
 
+
+
+
+
 async function login(name, pass) {
+  // token for jwt to get user info
   let token; 
+
+  //check for login 
   axios.post('http://localhost:3000/account/login', 
   {
     name: name,
     pass: pass,
   }).then(function(response) {
-    //alert("jwt:"+response.data.jwt);
+    
     localStorage.setItem('jwt', response.data.jwt);   
     token = localStorage.getItem('jwt');  
 
-    //change pages and load home screen for study hall 
-    window.location.replace("study_hall.html");
-    getUserHomeInfo();
+    // testing for user for todo list 
+    axios.post('http://localhost:3000/user/TODO' , 
+      {data: {
+        l1: "clean dishes",
+        l2: "do homework"
+      }},
+      {headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` }
+    }).then(function(res){
+      //change pages and load home screen for study hall after login
+      window.location.replace("study_hall.html");
+      getUserHomeInfo();
+    }).catch(error =>{
+      console.log(error); 
+    });
+
   }).catch(error =>{
     console.log(error); 
   });
 
-  
- 
-  
-  /*r.then(response => {
-     
-    
-  }).catch(error =>{
-    console.log(error); 
-  });
-*/
+
   
 }

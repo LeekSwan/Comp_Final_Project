@@ -55,6 +55,20 @@
         "last": "Lu",
         "email": "stephanieatlu99@gmail.com"
       }
+    },
+    "c": {
+      "passwordHash": "$2b$10$YswqFuXUknexoCuOYrK4BuhKfzVHpufZgcOKRVa1cQXmcQquLy11u",
+      "data": {
+        "last": "c",
+        "email": "c@"
+      }
+    },
+    "m": {
+      "passwordHash": "$2b$10$INx1Ud1C4sfvBUIiV3TgJO9MCaPg5LQFCt0qcgwK8IndFkfhdr3M.",
+      "data": {
+        "last": "m",
+        "email": "m@"
+      }
     }
   }
 }
