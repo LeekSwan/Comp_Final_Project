@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="music.css"/>
+    <title>Music</title>
+</head>
+    <audio src="" controls id="audioPlayer" loop></audio>
+    <div class="songs">
+        <h3>An Assortment of Study Music to Help You Focus</h3>
+        <button onclick='sakura();' id="sakura">Sakura Falls</button>
+        <button onclick='night();' id="night">Night Float</button>
+        <button onclick='white();' id="white">White Nostalgia</button>
+    </div>
+    <div class="sounds">
+        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
+        <button onclick='rain();' id="rain">RAIN</button>
+        <button onclick='waves();' id="waves">WAVES</button>
+        <button onclick='forest()' id="forest">FOREST</button>
+    </div>
+<body>
+
+    <script>
+        function sakura(){
+            $('#audioPlayer')[0].src = "./sounds/sakurafloat.mp3";
+            $('#audioPlayer')[0].play();
+        };
+        function white(){
+            $('#audioPlayer')[0].src = "./sounds/whitenostalgia.mp3";
+            $('#audioPlayer')[0].play();
+        };
+        function night(){
+            $('#audioPlayer')[0].src = "./sounds/night.mp3";
+            $('#audioPlayer')[0].play();
+        };
+        function rain(){
+            $('#audioPlayer')[0].src = "./sounds/rain.mp3";
+            $('#audioPlayer')[0].play();
+        };
+        function waves(){
+            $('#audioPlayer')[0].src = "./sounds/beach.mp3";
+            $('#audioPlayer')[0].play();
+        };
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</body>
+</html>

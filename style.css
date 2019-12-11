@@ -4,7 +4,7 @@
   float: left;
   border: 1px solid #ccc;
   background-color: #f1f1f1;
-  width: 30%;
+  width: 20%;
   height: 100vh;
 }
 
@@ -28,7 +28,25 @@
   background-color: #ddd;
 }
 
+/*HOME STYLE SHEET
+#welcome {
+  color: rgb(197, 182, 182);
+  padding-top: 30px;
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-stretch: extra-expanded;
+} */
 
+/*MUSIC STYLE SHEET
+.music button {
+  border: solid gray;
+  border-radius: 5px;
+  background: none;
+  font: sans-serif;
+  color: darkgrey;
+  padding: 5px;
+  margin: 10px;
+} */
 
 
 /*LIST STYLE SHEET*/

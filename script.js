@@ -12,6 +12,34 @@ export const renderSite = function() {
         getUserHomeInfo(); 
     });
 
+    //music
+    $(document).on('click', '#sakura', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/sakurafloat.mp3";
+      $('#audioPlayer')[0].play();
+      $('#audioPlayer')[0].animate({volume: newVolume}, 1000);
+    });
+    $(document).on('click', '#night', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/night.mp3";
+      $('#audioPlayer')[0].play();
+    });
+    $(document).on('click', '#white', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/whitenostalgia.mp3";
+      $('#audioPlayer')[0].play();
+    });
+    $(document).on('click', '#waves', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/beach.mp3";
+      $('#audioPlayer')[0].play();
+    });
+    $(document).on('click', '#rain', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/rain.mp3";
+      $('#audioPlayer')[0].play();
+    });
+
     //Leader Board
     $(document).on('click', '#leader', function(e){
         e.preventDefault(); 
@@ -28,17 +56,17 @@ export const renderSite = function() {
         getToDo(); 
     });
         
-        // list functionality 
-        $(document).on("keyup", ".userInput" ,function(e) {
-            e.preventDefault();         
-            var idNUM = 0;         
-            //13  means enter button
-            if(e.keyCode == 13 && $(".userInput").val() != "")
-            {
-                e.preventDefault();
-                var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
-                idNUM++; 
-                addTODO(idNUM, $(".userInput").val());  
+    // list functionality 
+    $(document).on("keyup", ".userInput",function(e) {
+        e.preventDefault();         
+        var idNUM = 0;         
+        //13  means enter button
+        if(e.keyCode == 13 && $(".userInput").val() != "")
+        {
+          e.preventDefault();
+          var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
+          idNUM++; 
+          addTODO(idNUM, $(".userInput").val());  
                 
                 
               //for checkmark
@@ -67,7 +95,7 @@ export const renderSite = function() {
               $(".userInput").val("");
               return false;
             }
-          });
+    });
     
     
     //Calendar
@@ -105,17 +133,32 @@ export function getUserHomeInfo() {
 
     let screen = `
         <section id="root">
-        <div>
-        <h1>Welcome Back! Let's get to Studying!</h1>
-        <h2>Current Score: </h2>
-        <div>
-            <h1><time id="timer">00:00:00</time></h1>
-            <button id="start">start</button>
-            <button id="stop">stop</button>
-            <button id="clear">clear</button>
-        </div>
+        <div id="welcome" style="text-align: center">
+                    <h1>Welcome Back! Let's get to Studying!</h1>
+                    <h2>Current Score: </h2>
+                    <h1><time id="timer">00:00:00</time></h1>
+                    <button id="start">start</button>
+                    <button id="stop">stop</button>
+                    <button id="clear">clear</button>
+                </div>
+                <div class="music">
+                    <audio src="" controls id="audioPlayer" loop></audio>
+                    <div class="songs">
+                        <h3>An Assortment of Study Music to Help You Focus</h3>
+                        <button onclick='sakura();' id="sakura">Sakura Falls</button>
+                        <button onclick='night();' id="night">Night Float</button>
+                        <button onclick='white();' id="white">White Nostalgia</button>
+                    </div>
+                    <div class="sounds">
+                        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
+                        <button onclick='rain();' id="rain">RAIN</button>
+                        <button onclick='waves();' id="waves">WAVES</button>
+                        <button onclick='forest()' id="forest">FOREST</button>
+                    </div>
+                </div>
     </div>
-    </section>`
+    </section>
+    `
     $root.replaceWith(screen); 
 }
 
@@ -123,7 +166,7 @@ export async function getToDo(){
     const $root = $('#root');
     let screen = document.createElement('section');
     screen.innerHTML = `
-    <section id="root">
+    <section id="dostuff">
         <div id="list" class="container">
             <div class="notCompleted">
             <h3>Not Completed</h3>
