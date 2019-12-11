@@ -27,47 +27,47 @@ export const renderSite = function() {
         e.preventDefault(); 
         getToDo(); 
     });
-
-     // list functionality 
-     $(document).on("keyup", ".userInput" ,function(e) {
-        e.preventDefault();         
-        var idNUM = 0;         
-        //13  means enter button
-        if(e.keyCode == 13 && $(".userInput").val() != "")
-        {
-            e.preventDefault();
-            var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
-            idNUM++; 
-            addTODO(idNUM, $(".userInput").val()); 
-
-
-          //for checkmark
-          var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
-            var p = $(this).parent();
-            //$(".completed").append(p);
-            p.fadeOut(function(){
-              $(".completed").append(p);
-              p.fadeIn();
-            }); 
-            $(this).remove();
+        
+        // list functionality 
+        $(document).on("keyup", ".userInput" ,function(e) {
+            e.preventDefault();         
+            var idNUM = 0;         
+            //13  means enter button
+            if(e.keyCode == 13 && $(".userInput").val() != "")
+            {
+                e.preventDefault();
+                var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
+                idNUM++; 
+                addTODO(idNUM, $(".userInput").val());  
+                
+                
+              //for checkmark
+              var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
+                var p = $(this).parent();
+                //$(".completed").append(p);
+                p.fadeOut(function(){
+                  $(".completed").append(p);
+                  p.fadeIn();
+                }); 
+                $(this).remove();
+              });
+    
+              //for delete
+              var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
+                var p = $(this).parent();
+                //p.remove();
+                p.fadeOut(function(){
+                  p.remove();
+                });
+              });
+    
+              task.append(del,check);
+              $(".notCompleted").append(task);
+                //to clear the input
+              $(".userInput").val("");
+              return false;
+            }
           });
-
-          //for delete
-          var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
-            var p = $(this).parent();
-            //p.remove();
-            p.fadeOut(function(){
-              p.remove();
-            });
-          });
-
-          task.append(del,check);
-          $(".notCompleted").append(task);
-            //to clear the input
-          $(".userInput").val("");
-          return false;
-        }
-      });
     
     
     //Calendar
@@ -188,14 +188,27 @@ export async function getLeaderBoard(){
     $root.replaceWith(screen);  
 }
 
+async function randomQuote() {
+    const response = await fetch('https://api.quotable.io/random')
+    const data = await response.json()
+    $('#root').html(`${data.content} —${data.author}`);
+  }
+
+
 export async function getInspired(){
     const $root = $('#root');
     let screen = document.createElement('section');
+    const response = await fetch('https://api.quotable.io/random')
+    const data = await response.json()
     screen.innerHTML = `
     <section id="root">
-        <h1>Inspirational Quote</h1>
-
+        <p style="text-align:center">
+            <h1 >${data.content}</h1>
+            <h2>-- ${data.author}</h2>
+        </p>
     </section>`
+
+    
 
     $root.replaceWith(screen);  
 }
