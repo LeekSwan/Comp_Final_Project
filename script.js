@@ -188,6 +188,8 @@ export async function getLeaderBoard(){
     $root.replaceWith(screen);  
 }
 
+
+//API taken from https://github.com/lukePeavey/quotable
 async function randomQuote() {
     const response = await fetch('https://api.quotable.io/random')
     const data = await response.json()
