@@ -107,3 +107,17 @@
   color: rgba(255, 255, 255, 0.452);
   text-decoration: line-through;
 }
+
+/*QUOTE STYLE SHEET*/
+
+#quote_screen {
+  background: linear-gradient(90deg, rgb(238, 214, 177) 0%, rgb(212, 148, 10) 100%);
+  height: 625px;
+  padding: 250px 0;
+}
+
+#quote {
+  color: antiquewhite;
+  text-align: center;
+  font-size: 30px;
+}

@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 var ids = 0; 
 
-=======
-
-var idNUM = 0;
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
 export const renderSite = function() {
     const $root = $('#root');
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
@@ -48,12 +43,7 @@ export const renderSite = function() {
         e.preventDefault(); 
         getLeaderBoard(); 
     });
-<<<<<<< HEAD
     
-=======
-
-
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
 
     //To-Do
     $(document).on('click', '#toDo', function(e){
@@ -139,19 +129,15 @@ export const renderSite = function() {
         getChat(); 
     });
 
-<<<<<<< HEAD
+    //Logout
+    $(document).on('click', '#logout', async function(e){
+      getLogout(); 
+    });
+
+
 } 
-=======
-
-    
 
 
-
-
-
-    
-}
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
  
 $(function () {
     renderSite(); 
@@ -244,23 +230,7 @@ async function deleteTODO(){
 
 
 
-<<<<<<< HEAD
 export async function getLeaderBoard(){
-=======
-
-
-
-
-
-
-
-
-
-
-
-
- async function getLeaderBoard(){
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
     const $root = $('#root');
     var token = "Bearer " + localStorage.getItem('jwt');
     const pubRoot = new axios.create({
@@ -336,7 +306,7 @@ export async function getLeaderBoard(){
 }
 
 
-//API taken from https://github.com/lukePeavey/quotable
+//API taken from http://quotes.stormconsultancy.co.uk/api
 async function randomQuote() {
   const response = await fetch('https://api.quotable.io/random')
   const data = await response.json()
@@ -345,18 +315,22 @@ async function randomQuote() {
 
 
 export async function getInspired(){
-    const $root = $('#root');
-    let screen = document.createElement('section');
-    const response = await fetch('https://api.quotable.io/random')
-    const data = await response.json()
-    screen.innerHTML = `
-    <section id="root">
-        <p style="text-align:center">
-            <h1 >${data.content}</h1>
-            <h2>-- ${data.author}</h2>
+  const $root = $('#root');
+  let screen = document.createElement('section');
+  const response = await fetch('http://quotes.stormconsultancy.co.uk/random.json')
+  const data = await response.json()
+  screen.innerHTML = `
+  <section id="quote_screen">
+      <div id="quote">
+        <p>
+            <h1>${data.quote}</h1>
+            <h2> — ${data.author}</h2>
         </p>
-    </section>`
-    $root.replaceWith(screen);  
+      </div>
+  </section>`
+
+
+  $root.replaceWith(screen);  
 }
 
  async function getChat(){
@@ -371,14 +345,16 @@ export async function getInspired(){
 }
 
 
+export async function getLogout() {
+   
+
+}
 
 
 
 
 
 
-
-<<<<<<< HEAD
 
 function openTab(evt, tabName) {
     var i, tabcontent, tablinks;
@@ -393,5 +369,3 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
   } 
-=======
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
