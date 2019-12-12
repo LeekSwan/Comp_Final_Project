@@ -1,5 +1,5 @@
-var ids = 0; 
-
+let idNUM = 0;
+let counter = 0;
 export const renderSite = function() {
     const $root = $('#root');
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
@@ -197,17 +197,14 @@ export const renderSite = function() {
     });
 
 
-     //Logout
-     $(document).on('click', '#logout', async function(e){
-      getLogout(); 
-    });
+    
 
 
 
-} 
 
 
-
+    
+}
  
 $(function () {
     renderSite(); 
@@ -414,7 +411,7 @@ async function addTODOscreen(thing){
 }
 
 
-//API taken from http://quotes.stormconsultancy.co.uk/api
+//API taken from https://github.com/lukePeavey/quotable
 async function randomQuote() {
   const response = await fetch('https://api.quotable.io/random')
   const data = await response.json()
@@ -422,6 +419,7 @@ async function randomQuote() {
 }
 
 
+<<<<<<< HEAD
  async function getInspired(){
   const $root = $('#root');
   let screen = document.createElement('section');
@@ -433,12 +431,21 @@ async function randomQuote() {
         <p>
             <h1>${data.quote}</h1>
             <h2> — ${data.author}</h2>
+=======
+export async function getInspired(){
+    const $root = $('#root');
+    let screen = document.createElement('section');
+    const response = await fetch('https://api.quotable.io/random')
+    const data = await response.json()
+    screen.innerHTML = `
+    <section id="root">
+        <p style="text-align:center">
+            <h1 >${data.content}</h1>
+            <h2>-- ${data.author}</h2>
+>>>>>>> fb2f3873dfa7e650bc92e494158f99a08fcea691
         </p>
-      </div>
-  </section>`
-
-
-  $root.replaceWith(screen);  
+    </section>`
+    $root.replaceWith(screen);  
 }
 
  async function getChat(){
@@ -453,10 +460,12 @@ async function randomQuote() {
 }
 
 
+<<<<<<< HEAD
  async function getLogout() {
    
+=======
+>>>>>>> fb2f3873dfa7e650bc92e494158f99a08fcea691
 
-}
 
 
 

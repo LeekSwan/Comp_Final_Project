@@ -1,0 +1,11 @@
+{
+  "users": {
+    "kristi": {
+      "passwordHash": "$2a$10$xoqFyN3Yc4CWgT2qWRGbGuY41unh62XhLlyXPGiSD9E/v3YwbuP3O",
+      "data": {
+        "last": "kaz",
+        "email": "k@gmail.com"
+      }
+    }
+  }
+}
