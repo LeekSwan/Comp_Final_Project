@@ -1,10 +1,5 @@
 /* Style tabs, formatted from w3school*/
 /*Styling the tab*/
-.all {
-  background-image: url("./backgrounds/book 2.jpg");
-  background-size: cover;
-  height: 100%;
-}
 
 #root {
   margin-right: 100px;
@@ -180,3 +175,9 @@
   font-size: 50px;
 }
 
+/*QUOTE STYLE SHEET*/
+
+#quote {
+  margin-top: 100px;
+  margin-left: 20px;
+}

@@ -2,27 +2,38 @@
     box-sizing: border-box;
   }
 
+  p{
+    color:rgb(189, 187, 184);
+  }
+
+  .title h1{
+    font-size: 40px;
+    margin: 0px;
+    padding: 0px;
+  }
   
+  .subtitle{
+    font-size: 25px;
+  }
+
+
   html {
     overflow-y: scroll;
   }
   
-  body {
-    background: #c1bdba;
-    font-family: 'Titillium Web', sans-serif;
-  }
-  
   a {
     text-decoration: none;
-    color: #1ab188;
+    color: #aaada7;
     transition: .5s ease;
   }
   a:hover {
-    color: #179b77;
+    color: #d8dad9;
   }
   
   .form {
-    background: rgba(19, 35, 47, 0.9);
+    background: rgba(47, 19, 30, 0.712);
+    border-color: white;
+    border: solid;
     padding: 40px;
     max-width: 600px;
     margin: 39px auto auto auto;
@@ -34,6 +45,7 @@
     list-style: none;
     padding: 0;
     margin: 0 0 40px 0;
+    margin: 5px;
   }
   .tab-group:after {
     content: "";
@@ -44,8 +56,7 @@
     display: block;
     text-decoration: none;
     padding: 15px;
-    background: rgba(160, 179, 176, 0.25);
-    color: #a0b3b0;
+    margin-bottom: 10px;
     font-size: 20px;
     float: left;
     width: 50%;
@@ -54,12 +65,12 @@
     transition: .5s ease;
   }
   .tab-group li a:hover {
-    background: #179b77;
-    color: #ffffff;
+    background: #e7ebea3d;
+    color: #220202;
   }
   .tab-group .active a {
-    background: #1ab188;
-    color: #ffffff;
+    background: #e2e2e2;
+    color: #270404;
   }
   
   .tab-content > div:last-child {
@@ -86,7 +97,7 @@
   }
   label .req {
     margin: 2px;
-    color: #1ab188;
+    color: #c91240;
   }
   
   label.active {
@@ -118,11 +129,14 @@
   }
   input:focus, textarea:focus {
     outline: 0;
-    border-color: #1ab188;
+    border-color: white;
   }
   
+
+
+
   textarea {
-    border: 2px solid #a0b3b0;
+    border: 2px solid #838b8a;
     resize: vertical;
   }
   
@@ -154,13 +168,13 @@
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: .1em;
-    background: #1ab188;
-    color: #ffffff;
+    background: #edebee70;
+    color: #310404;
     transition: all 0.5s ease;
     -webkit-appearance: none;
   }
   .button:hover, .button:focus {
-    background: #179b77;
+    background: #ffffff;
   }
   
   .button-block {

@@ -1,9 +1,7 @@
-const search = document.getElementById("stateInput");
+const search = document.getElementById("userInput");
 const matchList = document.getElementById("matchList");
 
-//search states.json and filter
-//the fetch api can bring in json data! similar to how some
-//apis only need a url link to work
+
 const searchStates= async searchText => {
     //use fetch api to get to states.json
     const resResponse = await fetch("../data/autocompletestates.json"); 
