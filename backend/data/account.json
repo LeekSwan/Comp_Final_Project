@@ -20,6 +20,13 @@
         "last": "oo",
         "email": "oooo@gmail.com"
       }
+    },
+    "omg": {
+      "passwordHash": "$2a$10$Ebj6IGQo1S4OkQUttpvFk.Y.eBYkNyJtB5kV52HMvWPLMTQTBPBUG",
+      "data": {
+        "last": "omg",
+        "email": "omg@gmail.com"
+      }
     }
   }
 }

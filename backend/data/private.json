@@ -3,6 +3,10 @@
     "hi": {
       "name": "hi",
       "score": 0
+    },
+    "omg": {
+      "name": "omg",
+      "score": 0
     }
   }
 }
