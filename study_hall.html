@@ -35,15 +35,31 @@
             </div>
         </section>
 
+        <!--style="height: 100vh; background-image: url('./backgrounds/background.jpg'); background-repeat: no-repeat; background-size: cover"-->
         <section id="root">
-            <div id="home">
-                <h1>Welcome Back! Let's get to Studying!</h1>
-                <h2>Current Score: </h2>
-                <div>
+            <div id="homescreen">
+                <div id="welcome" style="text-align: center">
+                    <h1>Welcome Back! Let's get to Studying!</h1>
+                    <h2>Current Score: </h2>
                     <h1><time id="timer">00:00:00</time></h1>
                     <button id="start">start</button>
                     <button id="stop">stop</button>
                     <button id="clear">clear</button>
+                </div>
+                <div class="music">
+                    <audio src="" controls id="audioPlayer" loop></audio>
+                    <div class="songs">
+                        <h3>An Assortment of Study Music to Help You Focus</h3>
+                        <button onclick='sakura();' id="sakura">Sakura Falls</button>
+                        <button onclick='night();' id="night">Night Float</button>
+                        <button onclick='white();' id="white">White Nostalgia</button>
+                    </div>
+                    <div class="sounds">
+                        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
+                        <button onclick='rain();' id="rain">RAIN</button>
+                        <button onclick='waves();' id="waves">WAVES</button>
+                        <button onclick='forest()' id="forest">FOREST</button>
+                    </div>
                 </div>
             </div>
         </section>

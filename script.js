@@ -10,6 +10,34 @@ export const renderSite = function() {
         getUserHomeInfo(); 
     });
 
+    //music
+    $(document).on('click', '#sakura', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/sakurafloat.mp3";
+      $('#audioPlayer')[0].play();
+      $('#audioPlayer')[0].animate({volume: newVolume}, 1000);
+    });
+    $(document).on('click', '#night', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/night.mp3";
+      $('#audioPlayer')[0].play();
+    });
+    $(document).on('click', '#white', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/whitenostalgia.mp3";
+      $('#audioPlayer')[0].play();
+    });
+    $(document).on('click', '#waves', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/beach.mp3";
+      $('#audioPlayer')[0].play();
+    });
+    $(document).on('click', '#rain', function(e){
+      e.preventDefault();
+      $('#audioPlayer')[0].src = "./sounds/rain.mp3";
+      $('#audioPlayer')[0].play();
+    });
+
     //Leader Board
     $(document).on('click', '#leader', function(e){
         e.preventDefault(); 
@@ -123,17 +151,32 @@ $(function () {
 
     let screen = `
         <section id="root">
-        <div>
-        <h1>Welcome Back! Let's get to Studying!</h1>
-        <h2>Current Score: </h2>
-        <div>
-            <h1><time id="timer">00:00:00</time></h1>
-            <button id="start">start</button>
-            <button id="stop">stop</button>
-            <button id="clear">clear</button>
-        </div>
+        <div id="welcome" style="text-align: center">
+                    <h1>Welcome Back! Let's get to Studying!</h1>
+                    <h2>Current Score: </h2>
+                    <h1><time id="timer">00:00:00</time></h1>
+                    <button id="start">start</button>
+                    <button id="stop">stop</button>
+                    <button id="clear">clear</button>
+                </div>
+                <div class="music">
+                    <audio src="" controls id="audioPlayer" loop></audio>
+                    <div class="songs">
+                        <h3>An Assortment of Study Music to Help You Focus</h3>
+                        <button onclick='sakura();' id="sakura">Sakura Falls</button>
+                        <button onclick='night();' id="night">Night Float</button>
+                        <button onclick='white();' id="white">White Nostalgia</button>
+                    </div>
+                    <div class="sounds">
+                        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
+                        <button onclick='rain();' id="rain">RAIN</button>
+                        <button onclick='waves();' id="waves">WAVES</button>
+                        <button onclick='forest()' id="forest">FOREST</button>
+                    </div>
+                </div>
     </div>
-    </section>`
+    </section>
+    `
     $root.replaceWith(screen); 
 }
 
@@ -141,7 +184,7 @@ $(function () {
     const $root = $('#root');
     let screen = document.createElement('section');
     screen.innerHTML = `
-    <section id="root">
+    <section id="dostuff">
         <div id="list" class="container">
         <form id = 'formname' onsubmit = "async(e) =>{
             e.preventDefault();}">
@@ -276,14 +319,29 @@ async function deleteTODO(){
      
 }
 
- async function getInspired(){
+
+//API taken from https://github.com/lukePeavey/quotable
+async function randomQuote() {
+    const response = await fetch('https://api.quotable.io/random')
+    const data = await response.json()
+    $('#root').html(`${data.content} —${data.author}`);
+  }
+
+
+export async function getInspired(){
     const $root = $('#root');
     let screen = document.createElement('section');
+    const response = await fetch('https://api.quotable.io/random')
+    const data = await response.json()
     screen.innerHTML = `
     <section id="root">
-        <h1>Inspirational Quote</h1>
+        <p style="text-align:center">
+            <h1 >${data.content}</h1>
+            <h2>-- ${data.author}</h2>
+        </p>
+    </section>`
 
-    </section>`;
+    
 
     $root.replaceWith(screen);  
 }
