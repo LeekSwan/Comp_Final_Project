@@ -152,29 +152,50 @@ $(function () {
 
     let screen = `
         <section id="root">
+        <div id="homescreen">
+                
         <div id="welcome" style="text-align: center">
-                    <h1>Welcome Back! Let's get to Studying!</h1>
-                    <h2>Current Score: </h2>
-                    <h1><time id="timer">00:00:00</time></h1>
-                    <button id="start">start</button>
-                    <button id="stop">stop</button>
-                    <button id="clear">clear</button>
-                </div>
-                <div class="music">
-                    <audio src="" controls id="audioPlayer" loop></audio>
-                    <div class="songs">
-                        <h3>An Assortment of Study Music to Help You Focus</h3>
-                        <button onclick='sakura();' id="sakura">Sakura Falls</button>
-                        <button onclick='night();' id="night">Night Float</button>
-                        <button onclick='white();' id="white">White Nostalgia</button>
-                    </div>
-                    <div class="sounds">
-                        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
-                        <button onclick='rain();' id="rain">RAIN</button>
-                        <button onclick='waves();' id="waves">WAVES</button>
-                        <button onclick='forest()' id="forest">FOREST</button>
-                    </div>
-                </div>
+            <h1 style="font-size: 30px;  margin-bottom: 40px">Welcome Back! Let's get to Studying!</h1>
+            <h2 style="font-size: 30px">Current Score: </h2>
+            <h1 style="font-size: 60px"><time id="timer">00:00:00</time></h1>
+            <button id="start">start</button>
+            <button id="stop">pause</button>
+            <button id="clear">submit score</button>
+            <p id="progress">
+                The longer you study, the higher your score!
+                <br/> Before you begin, get your study materials ready.
+                Keep in mind that <span style="color:white">to discourage distractions, 
+                changing tabs will erase
+                your progress!</span>
+                <br/>
+                <br/>
+                Be sure to check out the Useful Tips section to follow the best study practices 
+                or methods!
+                <br/>
+                <br/>
+                In addition, choose from an assortment of <span style="color:white">relaxing music or sound effects</span> below, all designed to help you <span style="color:white">focus better.</span> 
+                <br/>
+                <br/>
+                Good luck and happy studying!
+            </p>
+        </div>
+        <div class="music" style="text-align: center">
+            <h1 style="font-size: 25px" id='label'>Music</h1>
+            <div class="songs">
+                <h3 style="font-size: 20px; margin-bottom: 20px">Study Music</h3>
+                <button id="sakura">▶ Sakura Falls</button>
+                <button id="night">▶ Night Float</button>
+                <button id="white">▶ White Nostalgia</button>
+            </div>
+            <div class="sounds">
+                <h3 style="font-size: 20px; margin-bottom: 20px">Sound Effects</h3>
+                <button id="rain">▶ Rain</button>
+                <button id="waves">▶ Waves</button>
+                <button id="forest">▶ Forest</button>
+            </div>
+            </div>
+            <audio src="" controls id="audioPlayer" loop></audio>
+        </div>
     </div>
     </section>
     `
@@ -189,13 +210,13 @@ $(function () {
         <div id="list" class="container">
         <form id = 'formname'>
             <div class="notCompleted">
-              <h3>Not Completed</h3>
+              <h3 style="margin-bottom: 10px">Not Completed</h3>
             </div>
             <div class="completed">
-              <h3>Completed</h3>
+              <h3 style="margin-bottom: 10px">Completed</h3>
             </div>
               <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
-              <button type="submit" id="test">Add</button>
+              <button type="submit" id="test">+</button>
         </form>
         </div>
     </section>

@@ -2,10 +2,7 @@
     box-sizing: border-box;
   }
 
-
-  .title h1{
-    color: red;
-  }
+  
   html {
     overflow-y: scroll;
   }

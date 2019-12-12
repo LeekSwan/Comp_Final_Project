@@ -1,20 +1,38 @@
 /* Style tabs, formatted from w3school*/
 /*Styling the tab*/
+.all {
+  background-image: url("./backgrounds/book 2.jpg");
+  background-size: cover;
+  height: 100%;
+}
+
+#root {
+  margin-right: 100px;
+  margin-left: 300px;
+}
+
 .tab {
   float: left;
-  border: 1px solid #ccc;
-  background-color: #f1f1f1;
+  background:none;
   width: 20%;
   height: 100vh;
 }
 
+
+.title, .subtitle{
+  margin-left:70px;
+}
 /*style buttons in the tab*/
 .tab button {
   display: block;
-  background-color: inherit;
-  color: black;
-  padding: 22px 16px;
-  width: 100%;
+  /*background-color: rgb(116, 113, 108);*/
+  background: none;
+  color: rgb(119, 118, 112);
+  padding: 10px;
+  margin-bottom: 10px;
+  margin: 5px;
+  margin-left: 100px;
+  width: 230px;
   border: none;
   outline: none;
   text-align: left;
@@ -25,45 +43,84 @@
 
 /*Changes background color of the buttons on hover*/
 .tab button:hover {
-  background-color: #ddd;
+  color: white;
 }
 
 /*HOME STYLE SHEET*/
+#welcome {
+  margin-bottom: 20px;
+}
 #welcome button {
-  color: rgb(57, 99, 83);;
+  background: none;
+  color:white;
+  font-size: 20px;
+  border-radius: 4px;
   font-family: Arial, Helvetica, sans-serif;
   font-stretch: extra-expanded;
-  border: solid rgb(57, 99, 83);;
-  background: none;
-  border-radius: 5px;
+  border: 1px solid;
   padding: 5px;
   padding-left: 10px;
   padding-right: 10px;
+  margin-left: 20px;
+  margin-bottom: 40px;
 
 } 
 
+#welcome button:hover {
+  background-color: rgba(255, 255, 255, 0.466);
+}
+
+#progress {
+  color: rgb(173, 172, 165);
+}
+
+#homescreen{
+  color:white;
+}
+
 /*MUSIC STYLE SHEET*/
-.circle {
-  vertical-align: middle;
-  text-align:center;
-  margin-left: 70px;
-  border-radius: 50%;
-  background: black;
-  height: 200px;
-  width: 150px;
+.music {
+  margin-top: 70px;
+}
+
+.songs {
+  float:left;
+  position: absolute;
+  margin-left: 100px;
+}
+
+.sounds{
+  margin-left: 400px;
+}
+
+.sounds button {
+  margin-left: 900px;
+}
+
+.songs button:hover, .sounds button:hover {
+  background-color:rgba(255, 255, 255, 0.322);
 }
 
 #audioPlayer {
-  margin-left: 70px;
+  margin-left: 290px;
+  background: none;
+  margin-top: 20px;
+  background-color: none;
+  margin-bottom: 50px;
 }
 .music button {
-  border: solid rgb(57, 99, 83);
+  color:white;
+  font-size: 15px;
+  border-radius: 4px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-stretch: extra-expanded;
+  border: 1px solid;
   border-radius: 5px;
   background: none;
-  font: sans-serif;
-  color: rgb(57, 99, 83);
-  padding: 5px;
-  margin: 10px;
+  padding: 10px;
+  padding-left: 40px;
+  padding-right: 40px;
+  margin: 30px;
   display: block;
 } 
 
@@ -72,40 +129,54 @@
 #list {
   font-family: "copperplate", sans-serif;
   min-height: 100vh;
-  margin: 100px;
+  margin-left: 100px;
+  color: white;
+}
+
+.notCompleted, .completed {
+  font-size: 20px;
+  margin-bottom: 40px;
 }
 
 .userInput{
   border: none;
   background: none;
-  border-bottom: solid black;
+  border-bottom: solid white;
   width: 500px;
   font-size:20px;
   margin-top: 50px;
+  color: white;
 }
 
 .userInput::placeholder{
   color: rgb(94, 94, 94);
 }
 
-.userInput:focus, input:focus{
+.userInput:focus, input:focus, #test:focus{
   outline:none;
 }
 
 .notCompleted .task{
-  background-color: rgba(226, 174, 174, 0.5);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 15px;
-  margin-left: 200px;
   border-radius: 10px;
   margin-bottom: 10px;
 }
 
 .completed .task{
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(110, 90, 90, 0.562);
   padding: 15px;
-  margin-left: 200px;
   border-radius: 10px;
   color: rgba(255, 255, 255, 0.452);
   text-decoration: line-through;
   margin-bottom:10px;
 }
+
+#test {
+  background: none;
+  border:none;
+  color: white;
+  text-decoration: bold;
+  font-size: 50px;
+}
+

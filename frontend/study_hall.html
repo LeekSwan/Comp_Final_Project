@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-image:url('./backgrounds/book2.jpg'); 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,18 +12,20 @@
  
         <!-- Include links to CSS stylesheets below -->
         <link rel="stylesheet" href="style.css"/> 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css">
         
     </head>
     <body>
-        <section class="hero is-dark is-medium">
+        <section class="all">
+        <!--<section class="hero" style="background-color: rgb(19, 14, 8)">-->
+            <section class="hero">
             <div class="hero-body">
-                <h1 class="title">
+                <h1 class="title" style="color:rgb(172, 172, 172)">
                     Study Hall
                 </h1>
-                <h2 class="subtitle">
+                <h2 class="subtitle" style="color:grey">
                     The source for students to collaborate, focus and stay organized
                 </h2>
             </div>
@@ -34,34 +40,54 @@
                 <button class="tablinks" id="chat">Chat</button>
             </div>
         </section>
-        <section id="root" style="height: 100vh; background: linear-gradient(90deg, rgba(223,201,165,1) 0%, rgba(106,216,231,1) 100%);">
+        <section id="root">
             <div id="homescreen">
                 
                 <div id="welcome" style="text-align: center">
-                    <h1>Welcome Back! Let's get to Studying!</h1>
-                    <h2>Current Score: </h2>
-                    <h1><time id="timer">00:00:00</time></h1>
+                    <h1 style="font-size: 30px;  margin-bottom: 40px">Welcome Back! Let's get to Studying!</h1>
+                    <h2 style="font-size: 30px">Current Score: </h2>
+                    <h1 style="font-size: 60px"><time id="timer">00:00:00</time></h1>
                     <button id="start">start</button>
-                    <button id="stop">stop</button>
-                    <button id="clear">clear</button>
+                    <button id="stop">pause</button>
+                    <button id="clear">submit score</button>
+                    <p id="progress">
+                        The longer you study, the higher your score!
+                        <br/> Before you begin, get your study materials ready.
+                        Keep in mind that <span style="color:white">to discourage distractions, 
+                        changing tabs will erase
+                        your progress!</span>
+                        <br/>
+                        <br/>
+                        Be sure to check out the Useful Tips section to follow the best study practices 
+                        or methods!
+                        <br/>
+                        <br/>
+                        In addition, choose from an assortment of <span style="color:white">relaxing music or sound effects</span> below, all designed to help you <span style="color:white">focus better.</span> 
+                        <br/>
+                        <br/>
+                        Good luck and happy studying!
+                    </p>
                 </div>
-                <div class="music">
-                    <audio src="" controls id="audioPlayer" loop></audio>
+                <div class="music" style="text-align: center">
+                    <h1 style="font-size: 25px" id='label'>Music</h1>
                     <div class="songs">
-                        <h3>An Assortment of Study Music to Help You Focus</h3>
-                        <button id="sakura">Sakura Falls</button>
-                        <button id="night">Night Float</button>
-                        <button id="white">White Nostalgia</button>
+                        <h3 style="font-size: 20px; margin-bottom: 20px">Study Music</h3>
+                        <button id="sakura">▶ Sakura Falls</button>
+                        <button id="night">▶ Night Float</button>
+                        <button id="white">▶ White Nostalgia</button>
                     </div>
                     <div class="sounds">
-                        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
-                        <button id="rain">RAIN</button>
-                        <button id="waves">WAVES</button>
-                        <button id="forest">FOREST</button>
+                        <h3 style="font-size: 20px; margin-bottom: 20px">Sound Effects</h3>
+                        <button id="rain">▶ Rain</button>
+                        <button id="waves">▶ Waves</button>
+                        <button id="forest">▶ Forest</button>
                     </div>
+                    </div>
+                    <audio src="" controls id="audioPlayer" loop></audio>
                 </div>
             </div>
         </section>
+    </section>
             
     </body>
 
