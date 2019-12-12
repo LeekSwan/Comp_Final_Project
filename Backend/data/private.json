@@ -1,12 +1,16 @@
 {
   "scores": {
-    "kristi": {
-      "name": "kristi",
-      "score": 0
-    },
-    "omg": {
-      "name": "omg",
-      "score": 0
-    }
+    "kristi": [
+      {
+        "name": "kristi",
+        "score": 0
+      },
+      {
+        "score": 360
+      },
+      {
+        "score": 360
+      }
+    ]
   }
 }

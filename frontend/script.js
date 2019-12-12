@@ -419,7 +419,6 @@ async function randomQuote() {
 }
 
 
-<<<<<<< HEAD
  async function getInspired(){
   const $root = $('#root');
   let screen = document.createElement('section');
@@ -431,18 +430,6 @@ async function randomQuote() {
         <p>
             <h1>${data.quote}</h1>
             <h2> — ${data.author}</h2>
-=======
-export async function getInspired(){
-    const $root = $('#root');
-    let screen = document.createElement('section');
-    const response = await fetch('https://api.quotable.io/random')
-    const data = await response.json()
-    screen.innerHTML = `
-    <section id="root">
-        <p style="text-align:center">
-            <h1 >${data.content}</h1>
-            <h2>-- ${data.author}</h2>
->>>>>>> fb2f3873dfa7e650bc92e494158f99a08fcea691
         </p>
     </section>`
     $root.replaceWith(screen);  
@@ -459,12 +446,6 @@ export async function getInspired(){
     $root.replaceWith(screen);  
 }
 
-
-<<<<<<< HEAD
- async function getLogout() {
-   
-=======
->>>>>>> fb2f3873dfa7e650bc92e494158f99a08fcea691
 
 
 
