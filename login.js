@@ -122,23 +122,18 @@ async function login(name, pass) {
     pass: pass,
   }).then(function(response) {
     
+
     localStorage.setItem('jwt', response.data.jwt);   
     token = localStorage.getItem('jwt');  
+
+    axios.post(`http://localhost:3000/private/scores/${name}` ,
+    {data: {["name"]: name, ["score"] : 0}},
+    {headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` }},
+    {type: "merge"});
+    
     window.location.replace("study_hall.html");
     getUserHomeInfo();
 
-    /*// testing for user for todo list 
-    axios.post('http://localhost:3000/user/TODO' , 
-      {data: {}},
-      {headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` }
-    }).then(function(res){
-      //change pages and load home screen for study hall after login
-      window.location.replace("study_hall.html");
-      getUserHomeInfo();
-    }).catch(error =>{
-      console.log(error); 
-    });
-*/
   }).catch(error =>{
     console.log(error); 
   });
