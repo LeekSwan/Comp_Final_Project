@@ -2,7 +2,6 @@
     box-sizing: border-box;
   }
 
-<<<<<<< HEAD:login_style.css
   body {
     background-image: url("http://getwallpapers.com/wallpaper/full/0/f/1/891619-cool-wallpaper-of-study-1920x1080.jpg");
     background-repeat:no-repeat;
@@ -10,11 +9,6 @@
   } 
   title {
     color: white;
-=======
-
-  .title h1{
-    color: red;
->>>>>>> e4bd592625de6616752921aa634ea23b8f2e3768:frontend/login_style.css
   }
   html {
     overflow-y: scroll;

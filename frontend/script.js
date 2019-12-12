@@ -114,7 +114,6 @@ export const renderSite = function() {
   
 
 
-<<<<<<< HEAD:script.js
     //To-Do
     $(document).on('click', '#toDo', function(e){
         getToDo(); 
@@ -183,8 +182,6 @@ export const renderSite = function() {
               $(".notCompleted").append(task);
                 //to clear the input
               $(".userInput").val("");
-=======
->>>>>>> e4bd592625de6616752921aa634ea23b8f2e3768:frontend/script.js
 
     
     //inspired
