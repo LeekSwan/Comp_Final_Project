@@ -96,9 +96,15 @@ export const renderSite = function() {
         $('#chat').css('color', 'white');
     });
 
+     
      //Logout
      $(document).on('click', '#logout', async function(e){
       getLogout(); 
+    });
+
+    //Deletes account
+    $(document).on('click', '#delete_account', async function(e) {
+      getDelete();
     });
 
 }
@@ -409,3 +415,38 @@ export function revertColors(){
   $('#toDo').css('color', 'rgb(119, 118, 112)');
 }
 
+export async function getLogout() {
+  //Deletes jwt token uppon logout
+
+  let token = localStorage.getItem('jwt');
+  localStorage.removeItem(token);
+  sessionStorage.removeItem(token);
+
+  window.location.replace("index.html");
+}
+
+
+
+export async function getDelete() {
+  //Deletes user account
+
+  const accRoot = new axios.create({
+    headers: {Authorization: 'Bearer ' + localStorage.getItem('jwt')},
+    baseURL: "http://localhost:3000/account/status"
+  });
+
+  async function getAccountStatus(){
+      return await accRoot.get()
+    }
+    (async () => {
+      let name = await getAccountStatus();
+      console.log(name);
+      name = name.data.user.name;
+      axios.delete(`http://localhost:3000/user`,
+      {headers: { Authorization: `Bearer ${localStorage.getItem('jwt')}` }}
+    );
+    })();
+
+  window.location.replace("index.html")
+
+}
