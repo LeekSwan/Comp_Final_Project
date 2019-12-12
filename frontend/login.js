@@ -1,6 +1,42 @@
+var likes = 0; 
 
+async function makeLikePath() {
+  const pubRoot = new axios.create({
+    baseURL: "http://localhost:3000/public"
+  });
+  pubRoot.post(`/likes`, {data: 0})
+}
+
+makeLikePath();
 
 $(document).ready(function(){
+  $(document).on('click', '#liked', async function(e){
+    e.preventDefault();
+    const pubRoot = new axios.create({
+      baseURL: "http://localhost:3000/public"
+    });
+
+    async function getLikes() {
+      return await pubRoot.get(`/likes`)
+    }
+
+    async function saveLikes(num_likes) {
+      return await pubRoot.post(`/likes`, {
+        data: num_likes
+      })
+    }
+
+      (async () => {
+        likes++; 
+        //console.log(likes);
+        let num_likes = await getLikes();
+        num_likes = num_likes.data.result + likes; 
+        saveLikes(num_likes);
+        document.getElementById('liked').innerHTML = `${num_likes} likes`;
+
+    })();
+
+  });
 
   $('.form').find('input, textarea').on('keyup blur focus', function (e) {
     

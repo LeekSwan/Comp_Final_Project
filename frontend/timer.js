@@ -44,7 +44,7 @@ export const renderSite = function() {
         var stopWatch=document.getElementById('timer');
         stopWatch.textContent = "00:00:00";
         // changing time according to seconds for testing
-        score = 60* 6; 
+        score = seconds* 6; 
         //console.log(score); 
         seconds = 0; 
         minutes = 0; 
@@ -63,22 +63,33 @@ export const renderSite = function() {
     
 
 
-        async function saveSCORE(score) {
-          return await privRoot.post(`/scores/${name}`, {
-            data: {["score"]:score},
-            type: "merge"
+        async function saveSCORE(old) {
+            let new_score = score +old;
+          return await privRoot.post(`/scores/${name}/score`, {
+            data: new_score
           })
         }
 
         async function getAccountStatus(){
             return await accRoot.get()
         }
+
+        async function getScore(user) {
+            return await privRoot.get(`/scores/${user}`);
+        }
  
         (async () => {
             name = await getAccountStatus();
+            console.log(name);
             name = name.data.user.name; 
-            await saveSCORE(score);
-            
+            let old_score = await getScore(name);
+            old_score = old_score.data.result.score;
+            //console.log(old_score);
+            //console.log(score);
+           await saveSCORE(old_score);
+           document.getElementById('currScore').innerText = `Current Score: ${score}`;
+           // axios.delete(http://localhost:3000/private/scores/ ,
+    //{headers: { Authorization: Bearer ${localStorage.getItem('jwt')} }});
         })();
 
     });

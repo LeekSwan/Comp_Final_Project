@@ -91,7 +91,7 @@ export const renderSite = function() {
 
     //Chat
     $(document).on('click', '#chat', async function(e){
-        getChat(); 
+        getTips(); 
         revertColors();
         $('#chat').css('color', 'white');
     });
@@ -155,14 +155,40 @@ function outputHtml(matches){
 
  function getUserHomeInfo() {
     const $root = $('#root');
+    var name;
+    var score;
+    var token = "Bearer " + localStorage.getItem('jwt');
+    const privRoot = new axios.create({
+    headers: {Authorization: token},
+    baseURL: "http://localhost:3000/private"
+    });
+    const accRoot = new axios.create({
+    headers: {Authorization: token},
+    baseURL: "http://localhost:3000/account/status"
+    });
 
+    async function getAccountStatus(){
+    return await accRoot.get()
+    }
+
+    async function getScore(user) {
+    return await privRoot.get(`/scores/${user}`)
+    }
+
+    (async () => {
+    name = await getAccountStatus();
+    name = name.data.user.name; 
+    score = await getScore(name);
+    score = score.data.result.score; 
+    document.getElementById('currScore').innerHTML = "Current Score: " + score;
+    })();
     let screen = `
         <section id="root">
         <div id="homescreen">
                 
         <div id="welcome" style="text-align: center">
             <h1 style="font-size: 30px;  margin-bottom: 40px">Welcome Back! Let's get to Studying!</h1>
-            <h2 style="font-size: 30px">Current Score: </h2>
+            <h2 style="font-size: 30px" id="currScore">Current Score: </h2>
             <h1 style="font-size: 60px"><time id="timer">00:00:00</time></h1>
             <button id="start">start</button>
             <button id="stop">pause</button>
@@ -327,23 +353,24 @@ async function addTODOscreen(thing){
        }*/
        
        let screen = document.createElement('section');
-       screen = `<section id="root" style="margin-left:100px; text-align: center">
+       screen = `<section id="root" style="margin-left:200px; text-align: center">
             <p class="title" style="color: white">Most Studious of Students</p>
-            <h2 class="subtitle" style="font-size: 25px; color:rgb(173, 172, 165)">How do you compare?</h2>
             <div class="columns is-multiline is-mobile">
             <div class="column is-one-quarter">
-                <code>Rank</code>
+                <code style="background:none; color: white; font-size: 25px">Rank</code>
             </div>
             <div class="column">
-                <code>Student</code>
+                <code style="background:none; color: white; font-size: 25px">Student</code>
             </div>
             <div class="column is-one-quarter">
-                <code>Score</code>
+                <code style="background:none; color: white; font-size: 25px">Score</code>
             </div>
         </div>
-            <section id="students">
+            <section id="students" style="background:none; color: white; font-size: 25px">
+            
 
             </section>
+            <h2 class="subtitle" style="margin-top: 50px; font-size: 25px; color:rgb(173, 172, 165, 0.5)">How do you compare?</h2>
             </section>
        `;
        $root.replaceWith(screen); 
@@ -359,13 +386,13 @@ async function addTODOscreen(thing){
             info.innerHTML=`
             <div class="columns is-multiline is-mobile">
                 <div class="column is-one-quarter">
-                    <code>${place}</code>
+                    <code style="background:none; color: rgb(167, 165, 157); font-size: 20px">${place}</code>
                 </div>
                 <div class="column">
-                    <code>${name}</code>
+                    <code style="background:none; color: rgb(167, 165, 157); font-size: 20px">${name}</code>
                 </div>
                 <div class="column is-one-quarter">
-                    <code>${score}</code>
+                    <code style="background:none; color: rgb(167, 165, 157); font-size: 20px">${score}</code>
                 </div>
             </div>
                     `;
@@ -448,5 +475,53 @@ export async function getDelete() {
     })();
 
   window.location.replace("index.html")
+
+}
+
+function getTips(){
+  const $root = $('#root');
+  let screen = document.createElement('section');
+  screen.innerHTML = 
+  `<section id="root" style="text-align: center">
+     <h1 class="title" style="margin-bottom: 40px; color: white; text-align: center">Tips to Keep You Focused and Succesful</h1>
+     <h2 class="subtitle" style="margin-bottom: 20px; color: rgb(167, 165, 157); font-size: 15px; text-align: center">Belows are some ideas and methods you can follow
+     so you can optimize your study time. Here at the Study Hall, we not only
+     hope you come out on top as the "Most Studios of Students", but also hope 
+     you succeed in your educational endeavors.</h2>
+  <div id="tips" class="container">
+    <div class="tip_info">
+      <h1 class="tip">Plan out your time!</h1>
+        <p class="tip_words">Always make sure you <span style="color:white">plan ahead</span> how much time you want to study.
+        Not only will this let you get a better score, but you'll be better prepared
+        for those pesky exams, quizes and homework assignments. 
+        </p>
+    </div>
+    
+    <div class="tip_info">
+      <h1 class="tip">Incorporate time for breaks</h1>
+        <p class="tip_words">It may seem impossible, but it is necessary to take <span style="color:white">regular breaks </span> from
+        studying so that you can retain all the information you're studying (and more importantly
+          not go crazy!).
+        </p>
+    </div>
+    
+    <div class="tip_info">
+      <h1 class="tip">Stay Hydrated</h1>
+        <p class="tip_words">
+        A focused brain is a <span style="color:white">well-watered brain </span>. <span style="color:white">Stay hydrated </span> throughout your study session.
+        </p>
+    </div>
+    
+    <div class="tip_info">
+      <h1 class="tip">Last but not least: RELAX</h1>
+        <p class="tip_words"> Being stressed is never a good thing. Being stressed while studying is even worse.
+        Maintain good stress relief habits such as <span style="color:white">meditating and exercising </span> so that each time
+        you enter the Study Hall, you will come into a focused study session. 
+        </p>
+    </div>
+    </div>
+  </section>`
+  
+  $root.replaceWith(screen);
 
 }

@@ -27,6 +27,13 @@
         "last": "omg",
         "email": "omg@gmail.com"
       }
+    },
+    "omgbestwebsite": {
+      "passwordHash": "$2a$10$N8wOj5557sgt7hgBWKMdTu74LG2wCTZfRMExsctJ1R5u1hZqZmx9S",
+      "data": {
+        "last": "",
+        "email": "om@gmail.com"
+      }
     }
   }
 }
