@@ -2,7 +2,11 @@
     box-sizing: border-box;
   }
 
-
+  body {
+    background-image: url("http://getwallpapers.com/wallpaper/full/0/f/1/891619-cool-wallpaper-of-study-1920x1080.jpg");
+    background-repeat:no-repeat;
+    background-size:auto;
+  } 
   title {
     color: white;
   }
@@ -74,6 +78,12 @@
     color: #ffffff;
     font-weight: 300;
     margin: 0 0 40px;
+  }
+
+  .subtitle {
+    text-align: center;
+    color: #ffffff;
+    font-weight: 300; 
   }
   
   label {

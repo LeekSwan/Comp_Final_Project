@@ -73,7 +73,6 @@ export const renderSite = function() {
             await createTODO(task, idNUM);
             
         })();
-    
     });
     
     
@@ -146,36 +145,52 @@ $(function () {
 }); 
 
 
- function getUserHomeInfo() {
+export async function getUserHomeInfo() {
     const $root = $('#root');
 
     let screen = `
-        <section id="root">
+    <section id="root">
+    <div id="homescreen">
         <div id="welcome" style="text-align: center">
-                    <h1>Welcome Back! Let's get to Studying!</h1>
-                    <h2>Current Score: </h2>
-                    <h1><time id="timer">00:00:00</time></h1>
-                    <button id="start">start</button>
-                    <button id="stop">stop</button>
-                    <button id="clear">clear</button>
-                </div>
-                <div class="music">
-                    <audio src="" controls id="audioPlayer" loop></audio>
-                    <div class="songs">
-                        <h3>An Assortment of Study Music to Help You Focus</h3>
-                        <button onclick='sakura();' id="sakura">Sakura Falls</button>
-                        <button onclick='night();' id="night">Night Float</button>
-                        <button onclick='white();' id="white">White Nostalgia</button>
-                    </div>
-                    <div class="sounds">
-                        <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
-                        <button onclick='rain();' id="rain">RAIN</button>
-                        <button onclick='waves();' id="waves">WAVES</button>
-                        <button onclick='forest()' id="forest">FOREST</button>
-                    </div>
-                </div>
+            <h1>Welcome Back! Let's get to Studying!</h1>
+            <h2>Current Score: </h2>
+            <h1><time id="timer">00:00:00</time></h1>
+            <button id="start">start</button>
+            <button id="stop">pause</button>
+            <button id="clear">submit score</button>
+            <p>
+                The longer you study, the higher your score!
+                <br/> Before you begin, get your study materials ready.
+                To ensure you've earned your score, changing tabs will erase
+                your progress, so keep this in mind! 
+                <br/>
+                <br/>
+                Be sure to check out the Useful Tips section to follow the best study practices 
+                or methods. 
+                <br/>
+                <br/>
+                Good luck and happy studying!
+            </p>
+
+        </div>
+        <div class="music">
+            <audio src="" controls id="audioPlayer" loop></audio>
+            <div class="songs">
+                <h3>An Assortment of Study Music to Help You Focus</h3>
+                <button onclick='sakura();' id="sakura">Sakura Falls</button>
+                <button onclick='night();' id="night">Night Float</button>
+                <button onclick='white();' id="white">White Nostalgia</button>
+            </div>
+            <div class="sounds">
+                <h3>An Assortment of Relaxing Sounds to Help You Focus</h3>
+                <button onclick='rain();' id="rain">RAIN</button>
+                <button onclick='waves();' id="waves">WAVES</button>
+                <button onclick='forest()' id="forest">FOREST</button>
+            </div>
+        </div>
     </div>
-    </section>
+</section>
+    
     `
     $root.replaceWith(screen); 
 }
@@ -184,7 +199,7 @@ $(function () {
     const $root = $('#root');
     let screen = document.createElement('section');
     screen.innerHTML = `
-    <section id="dostuff">
+    <section id="root">
         <div id="list" class="container">
         <form id = 'formname' onsubmit = "async(e) =>{
             e.preventDefault();}">
