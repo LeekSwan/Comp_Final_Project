@@ -116,6 +116,7 @@ export const renderSite = function() {
 
 
     
+     
     //inspired
     $(document).on('click', '#inspire', async function(e){
       getInspired();
@@ -124,6 +125,11 @@ export const renderSite = function() {
     //Chat
     $(document).on('click', '#chat', async function(e){
         getChat(); 
+    });
+
+     //Logout
+     $(document).on('click', '#logout', async function(e){
+      getLogout(); 
     });
 
 
@@ -325,7 +331,7 @@ async function addTODOscreen(thing){
 }
 
 
-//API taken from https://github.com/lukePeavey/quotable
+//API taken from http://quotes.stormconsultancy.co.uk/api
 async function randomQuote() {
   const response = await fetch('https://api.quotable.io/random')
   const data = await response.json()
@@ -334,29 +340,20 @@ async function randomQuote() {
 
 
 export async function getInspired(){
-    const $root = $('#root');
-    let screen = document.createElement('section');
-    const response = await fetch('https://api.quotable.io/random')
-    const data = await response.json()
-    screen.innerHTML = `
-    <section id="root">
-        <p style="text-align:center">
-            <h1 >${data.content}</h1>
-            <h2>-- ${data.author}</h2>
+  const $root = $('#root');
+  let screen = document.createElement('section');
+  const response = await fetch('http://quotes.stormconsultancy.co.uk/random.json')
+  const data = await response.json()
+  screen.innerHTML = `
+  <section id="root">
+      <div id="quote">
+        <p>
+            <h1>${data.quote}</h1>
+            <h2> — ${data.author}</h2>
         </p>
-    </section>`
-    $root.replaceWith(screen);  
-}
-
- async function getChat(){
-    const $root = $('#root');
-    let screen = document.createElement('section');
-    screen.innerHTML = `
-    <section id="root">
-        <h1>Chat room here</h1>
-
-    </section>`;
-    $root.replaceWith(screen);  
+      </div>
+  </section>`
+  $root.replaceWith(screen);  
 }
 
 
