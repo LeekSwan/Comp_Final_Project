@@ -182,6 +182,8 @@ export const renderSite = function() {
               $(".notCompleted").append(task);
                 //to clear the input
               $(".userInput").val("");
+            }
+        });
 
     
     //inspired
@@ -212,7 +214,7 @@ $(function () {
 }); 
 
 
-export async function getUserHomeInfo() {
+ async function getUserHomeInfo() {
     const $root = $('#root');
 
     let screen = `
@@ -420,7 +422,7 @@ async function randomQuote() {
 }
 
 
-export async function getInspired(){
+ async function getInspired(){
   const $root = $('#root');
   let screen = document.createElement('section');
   const response = await fetch('http://quotes.stormconsultancy.co.uk/random.json')
@@ -451,13 +453,10 @@ export async function getInspired(){
 }
 
 
-export async function getLogout() {
+ async function getLogout() {
    
 
 }
-
-
-
 
 
 
