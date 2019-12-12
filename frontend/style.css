@@ -93,16 +93,17 @@
 }
 
 .notCompleted .task{
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(226, 174, 174, 0.5);
   padding: 15px;
-  margin: 10px;
+  margin-left: 200px;
   border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 .completed .task{
   background-color: rgba(0, 0, 0, 0.5);
   padding: 15px;
-  margin: 10px;
+  margin-left: 200px;
   border-radius: 10px;
   color: rgba(255, 255, 255, 0.452);
   text-decoration: line-through;
