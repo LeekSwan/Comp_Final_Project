@@ -1,6 +1,5 @@
 var ids = 0; 
 
-
 export const renderSite = function() {
     const $root = $('#root');
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
@@ -38,7 +37,7 @@ export const renderSite = function() {
       e.preventDefault();
       $('#audioPlayer')[0].src = "./sounds/rain.mp3";
       $('#audioPlayer')[0].play();
-    });
+    }); 
 
     //Leader Board
     $(document).on('click', '#leader', function(e){
@@ -46,9 +45,6 @@ export const renderSite = function() {
         getLeaderBoard(); 
     });
     
-
-
-
 
     //To-Do
     $(document).on('click', '#toDo', function(e){
@@ -97,10 +93,9 @@ export const renderSite = function() {
             }
     });
     
-    
-    //Calendar
+    //inspired
     $(document).on('click', '#inspire', async function(e){
-        getInspired();
+      getInspired();
     });
 
     //Chat
@@ -108,14 +103,7 @@ export const renderSite = function() {
         getChat(); 
     });
 
-
-
-
-
-
-
-    
-}
+} 
  
 $(function () {
     renderSite(); 
@@ -166,7 +154,7 @@ export async function getToDo(){
     const $root = $('#root');
     let screen = document.createElement('section');
     screen.innerHTML = `
-    <section id="dostuff">
+    <section id="root">
         <div id="list" class="container">
             <div class="notCompleted">
             <h3>Not Completed</h3>
@@ -207,18 +195,6 @@ async function deleteTODO(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 export async function getLeaderBoard(){
     const $root = $('#root');
     let screen = document.createElement('section');
@@ -234,10 +210,10 @@ export async function getLeaderBoard(){
 
 //API taken from https://github.com/lukePeavey/quotable
 async function randomQuote() {
-    const response = await fetch('https://api.quotable.io/random')
-    const data = await response.json()
-    $('#root').html(`${data.content} —${data.author}`);
-  }
+  const response = await fetch('https://api.quotable.io/random')
+  const data = await response.json()
+  $('#root').html(`${data.content} —${data.author}`);
+}
 
 
 export async function getInspired(){
@@ -252,9 +228,6 @@ export async function getInspired(){
             <h2>-- ${data.author}</h2>
         </p>
     </section>`
-
-    
-
     $root.replaceWith(screen);  
 }
 
@@ -290,4 +263,4 @@ function openTab(evt, tabName) {
     }
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
-  }
+  } 
