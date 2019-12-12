@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-var ids = 0; 
-
-=======
-
-var idNUM = 0;
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
+let idNUM = 0;
+let counter = 0;
 export const renderSite = function() {
     const $root = $('#root');
     //here is where you will add button handlers, and any extra stuff you need to link to your async helper functions. You can also do this directly in the main function but its not recommended.
@@ -20,7 +15,6 @@ export const renderSite = function() {
       e.preventDefault();
       $('#audioPlayer')[0].src = "./sounds/sakurafloat.mp3";
       $('#audioPlayer')[0].play();
-      $('#audioPlayer')[0].animate({volume: newVolume}, 1000);
     });
     $(document).on('click', '#night', function(e){
       e.preventDefault();
@@ -48,86 +42,79 @@ export const renderSite = function() {
         e.preventDefault(); 
         getLeaderBoard(); 
     });
-<<<<<<< HEAD
-    
-=======
 
-
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
-
-    //To-Do
-    $(document).on('click', '#toDo', function(e){
-        getToDo(); 
-    });
-        
-    $(document).on('click','#test', function(event){
-        event.preventDefault();
-        console.log('testing');
-        var token = "Bearer " + localStorage.getItem('jwt');
-        const pubRoot = new axios.create({
-            headers: {Authorization: token},
-            baseURL: "http://localhost:3000/user"
-        });
-    
-        async function createTODO(todo, key) {
-          return await pubRoot.post(`/TODO/${idNUM}`, {
-            data: {["task"]:todo, ["key"]: key},
-            type: "merge"
-          })
-        }
- 
-        (async () => {
-            var task = $(".userInput").val();
-            idNUM++;
-            await createTODO(task, idNUM);
-            
-        })();
-    
-    });
-    
-    
-    
-        
-        // list functionality 
-        $(document).on("keyup", ".userInput" ,async function(e) {
-            e.preventDefault();         
-            //13  means enter button
-            if(e.keyCode == 13 && $(".userInput").val() != "")
-            {
-                e.preventDefault();
-                var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
-                addTODO(idNUM, $(".userInput").val());  
-                idNUM++; 
-                
-                
-              //for checkmark
-              var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
-                var p = $(this).parent();
-                //$(".completed").append(p);
-                p.fadeOut(function(){
-                  $(".completed").append(p);
-                  p.fadeIn();
-                }); 
-                $(this).remove();
+     //To-Do
+     $(document).on('click', '#toDo', function(e){
+      getToDo(); 
+      });
+      
+  $(document).on('click','#test', function(event){
+      event.preventDefault();
+      console.log('testing');
+      var token = "Bearer " + localStorage.getItem('jwt');
+      const pubRoot = new axios.create({
+          headers: {Authorization: token},
+          baseURL: "http://localhost:3000/user"
+      });
+  
+      async function createTODO(todo, key) {
+        return await pubRoot.post(`/TODO/${idNUM}`, {
+          data: {["task"]:todo, ["key"]: key},
+          type: "merge"
+        })
+      }
+      (async () => {
+          var task = $(".userInput").val();
+          idNUM++;
+          await createTODO(task, idNUM);
+      })();
+      addTODOscreen($(".userInput").val());
+  
+  });
+  /*
+      // list functionality 
+      $(document).on("keyup", ".userInput" ,async function(e) {
+          e.preventDefault();         
+          //13  means enter button
+          if(e.keyCode == 13 && $(".userInput").val() != "")
+          {
+              e.preventDefault();
+              var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
+              addTODO(idNUM, $(".userInput").val());  
+              idNUM++; 
+              
+              
+            //for checkmark
+            var check = $("<i class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
+              var p = $(this).parent();
+              //$(".completed").append(p);
+              p.fadeOut(function(){
+                $(".completed").append(p);
+                p.fadeIn();
+              }); 
+              $(this).remove();
+            });
+  
+            //for delete
+            var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
+              var p = $(this).parent();
+              //p.remove();
+              p.fadeOut(function(){
+                p.remove();
               });
-    
-              //for delete
-              var del = $("<i class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
-                var p = $(this).parent();
-                //p.remove();
-                p.fadeOut(function(){
-                  p.remove();
-                });
-              });
-    
-              task.append(del,check);
-              $(".notCompleted").append(task);
-                //to clear the input
-              $(".userInput").val("");
+            });
+  
+            task.append(del,check);
+            $(".notCompleted").append(task);
+              //to clear the input
+            $(".userInput").val("");
 
-            }
-          });
-    
+          }
+        }); */
+  
+
+
+
     
     //inspired
     $(document).on('click', '#inspire', async function(e){
@@ -139,9 +126,6 @@ export const renderSite = function() {
         getChat(); 
     });
 
-<<<<<<< HEAD
-} 
-=======
 
     
 
@@ -151,7 +135,6 @@ export const renderSite = function() {
 
     
 }
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
  
 $(function () {
     renderSite(); 
@@ -198,18 +181,16 @@ $(function () {
     screen.innerHTML = `
     <section id="root">
         <div id="list" class="container">
-        <form id = 'formname' onsubmit = "async(e) =>{
-            e.preventDefault();}">
+        <form id = 'formname'>
             <div class="notCompleted">
-            <h3>Not Completed</h3>
+              <h3>Not Completed</h3>
             </div>
             <div class="completed">
-            <h3>Completed</h3>
+              <h3>Completed</h3>
             </div>
-            <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
-            <button type="submit" onSubmit id="test">Add</button>
-            </div>
-            </form>
+              <input type="text" class="userInput" placeholder="Put the things you will procrastinate on here">
+              <button type="submit" id="test">Add</button>
+        </form>
         </div>
     </section>
     `
@@ -236,31 +217,39 @@ async function addTODO(idNUM, task){
   });
 }
 
-
-// delete to do 
-async function deleteTODO(){
+async function addTODOscreen(thing){
+        var task = thing;
+        var task = $(`<div id=l${idNUM} class='task'></div>`).text($(".userInput").val());
+        //for checkmark
+            var check = $("<i id='complete' class='fas fa-check' style='float:right; margin-right: 20px;'></i>").click(function(){
+              var p = $(this).parent();
+              //$(".completed").append(p);
+              p.fadeOut(function(){
+                $(".completed").append(p);
+                p.fadeIn();
+              }); 
+              $(this).remove();
+            });
+  
+            //for delete
+            var del = $("<i id='deleteTODO' class='fas fa-trash' style='float:right; margin-right: 20px;'></i>").click(function(){
+              var p = $(this).parent();
+              //p.remove();
+              p.fadeOut(function(){
+                p.remove();
+              });
+            });
+  
+            task.append(del,check);
+            $(".notCompleted").append(task);
+              //to clear the input
+            $(".userInput").val("");
 
 }
 
-
-
-<<<<<<< HEAD
-export async function getLeaderBoard(){
-=======
-
-
-
-
-
-
-
-
-
-
-
+// delete to do 
 
  async function getLeaderBoard(){
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
     const $root = $('#root');
     var token = "Bearer " + localStorage.getItem('jwt');
     const pubRoot = new axios.create({
@@ -378,20 +367,3 @@ export async function getInspired(){
 
 
 
-<<<<<<< HEAD
-
-function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementById("tabcontent");
-    /*for (i = 0; i < tabcontent.length; i++) {
-      tabcontent[i].style.display = "none";
-    }*/
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-      tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
-  } 
-=======
->>>>>>> bb73fc53b46a6bb33528512f9cd3d961b25c44e0
